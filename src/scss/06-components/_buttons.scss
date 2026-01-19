@@ -1,0 +1,17 @@
+@use '../01-settings/variables' as *;
+@use '../02-tools/mixins' as *;
+
+.btn {
+  @include flex-center;
+  padding: 0.5rem 1rem;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
