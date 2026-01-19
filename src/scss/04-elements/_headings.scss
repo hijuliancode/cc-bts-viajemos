@@ -1,7 +1,8 @@
-@use '../01-settings/variables' as *;
+@use '../01-settings' as *;
 
 h1 {
-  color: $primary-color;
+  color: $color-primary;
+  font-family: $font-family-heading;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }

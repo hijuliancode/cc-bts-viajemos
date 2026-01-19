@@ -1,5 +1,7 @@
+@use '../01-settings' as *;
+
 .container {
-  max-width: 1200px;
+  max-width: $breakpoint-xl;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 $spacing-4;
 }
