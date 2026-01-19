@@ -2,4 +2,4 @@
 @use '04-elements/headings';
 @use '05-layouts/grid';
 @use '06-components/buttons';
-@use '07-utilities/helpers';
+@use '07-utilities' as *;

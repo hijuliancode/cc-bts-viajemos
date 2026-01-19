@@ -17,3 +17,24 @@ $spacing-40: 10rem !default;  // 160px
 $spacing-48: 12rem !default;  // 192px
 $spacing-56: 14rem !default;  // 224px
 $spacing-64: 16rem !default;  // 256px
+
+$spacers: (
+  0: $spacing-0,
+  1: $spacing-1,
+  2: $spacing-2,
+  3: $spacing-3,
+  4: $spacing-4,
+  5: $spacing-5,
+  6: $spacing-6,
+  8: $spacing-8,
+  10: $spacing-10,
+  12: $spacing-12,
+  16: $spacing-16,
+  20: $spacing-20,
+  24: $spacing-24,
+  32: $spacing-32,
+  40: $spacing-40,
+  48: $spacing-48,
+  56: $spacing-56,
+  64: $spacing-64
+) !default;
