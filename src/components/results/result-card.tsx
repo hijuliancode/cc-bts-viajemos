@@ -149,31 +149,34 @@ export default function ResultCard({ car }: ResultCardProps) {
 
                     <div className="option-price">
                       <div className="price-header">
-                        <div className="price-meta">
-                          {recommendedOption.original_price_per_day && (
-                            <span className="original-price">
-                              {t("before")}{" "}
-                              {formatCurrency(
-                                recommendedOption.original_price_per_day,
-                              )}
-                            </span>
-                          )}
-                          {recommendedOption.discount_percentage && (
-                            <span className="discount-badge">
-                              -{recommendedOption.discount_percentage}%
-                            </span>
-                          )}
-                        </div>
+                        <div className="price-info-wrapper">
+                          <div className="price-meta">
+                            {recommendedOption.original_price_per_day && (
+                              <span className="original-price">
+                                {t("before")}{" "}
+                                {formatCurrency(
+                                  recommendedOption.original_price_per_day,
+                                )}
+                              </span>
+                            )}
+                            {recommendedOption.discount_percentage && (
+                              <span className="discount-badge">
+                                -{recommendedOption.discount_percentage}%
+                              </span>
+                            )}
+                          </div>
 
-                        <div className="main-price">
-                          <span className="amount">
-                            {formatCurrency(recommendedOption.price_per_day)}
-                          </span>
-                          <span className="period">| {t("day")}</span>
-                        </div>
+                          <div className="main-price">
+                            <span className="amount">
+                              {formatCurrency(recommendedOption.price_per_day)}
+                            </span>
+                            <span className="period">{t("day")}</span>
+                          </div>
 
-                        <div className="total-price">
-                          Total {formatCurrency(recommendedOption.total_price)}
+                          <div className="total-price">
+                            Total{" "}
+                            {formatCurrency(recommendedOption.total_price)}
+                          </div>
                         </div>
 
                         <button className="btn-reserve">
@@ -187,7 +190,7 @@ export default function ResultCard({ car }: ResultCardProps) {
 
               {/* Basic Option */}
               {basicOption && (
-                <div className="card__pricing-option card__pricing-option--basic">
+                <div className="card__pricing-option card__pricing-option--basic d-none d-md-block">
                   <div className="option-content">
                     <div className="option-details">
                       <h5 className="title">
@@ -213,26 +216,29 @@ export default function ResultCard({ car }: ResultCardProps) {
 
                     <div className="option-price">
                       <div className="price-header">
-                        {basicOption.original_price_per_day && (
-                          <div className="price-meta">
-                            <span className="original-price">
-                              {t("before")}{" "}
-                              {formatCurrency(
-                                basicOption.original_price_per_day,
-                              )}
+                        <div className="price-info-wrapper">
+                          {basicOption.original_price_per_day && (
+                            <div className="price-meta">
+                              <span className="original-price">
+                                {t("before")}{" "}
+                                {formatCurrency(
+                                  basicOption.original_price_per_day,
+                                )}
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="main-price">
+                            <span className="amount">
+                              {formatCurrency(basicOption.price_per_day)}
                             </span>
+                            <span className="period">| {t("day")}</span>
                           </div>
-                        )}
 
-                        <div className="main-price">
-                          <span className="amount">
-                            {formatCurrency(basicOption.price_per_day)}
-                          </span>
-                          <span className="period">| {t("day")}</span>
-                        </div>
-
-                        <div className="total-price">
-                          {t("total")} {formatCurrency(basicOption.total_price)}
+                          <div className="total-price">
+                            {t("total")}{" "}
+                            {formatCurrency(basicOption.total_price)}
+                          </div>
                         </div>
 
                         <button className="btn-reserve btn-reserve--outline">
