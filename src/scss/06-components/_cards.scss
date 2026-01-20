@@ -450,6 +450,8 @@ $brand-gray-light: #F9FAFB;
         transition: all 0.2s ease;
         width: auto;
         
+        @include focus-ring($brand-cyan);
+
         // Gradient Button (Cyan)
         background: linear-gradient(90deg, #00C3E3 0%, #00A8C5 100%);
         color: white;

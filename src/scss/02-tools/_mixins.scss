@@ -1,3 +1,5 @@
+@use '../01-settings' as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -8,6 +10,18 @@
   [data-theme='dark'] &,
   html.dark & {
     @content;
+  }
+}
+
+@mixin focus-ring($color: $color-primary, $offset: 2px) {
+  &:focus {
+    outline: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    box-shadow: 0 0 0 4px rgba($color, 0.2);
   }
 }
 
