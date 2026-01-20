@@ -1,4 +1,5 @@
 @use '../01-settings/colors' as *;
+@use '../01-settings/radius' as *;
 @use '../02-tools/mixins' as *;
 @use '../02-tools/breakpoints' as *;
 
@@ -25,7 +26,7 @@
   }
 }
 
-.rounded { border-radius: 0.25rem; }
-.rounded-xl { border-radius: 0.5rem; }
-.rounded-circle { border-radius: 50%; }
-.rounded-pill { border-radius: 50rem; }
+.rounded { border-radius: $border-radius-base; }
+.rounded-xl { border-radius: $border-radius-lg; }
+.rounded-circle { border-radius: $border-radius-circle; }
+.rounded-pill { border-radius: $border-radius-pill; }

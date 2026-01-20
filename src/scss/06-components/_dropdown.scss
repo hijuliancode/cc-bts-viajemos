@@ -1,4 +1,5 @@
 @use '../01-settings' as *;
+@use '../01-settings/radius' as *;
 
 .dropdown {
   align-items: center;
@@ -11,7 +12,7 @@
   
   &__menu {
     background: var(--bg-header);
-    border-radius: $spacing-2;
+    border-radius: $border-radius-lg;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     min-width: 200px;
     padding: $spacing-2 0;

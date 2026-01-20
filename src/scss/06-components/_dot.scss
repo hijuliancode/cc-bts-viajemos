@@ -2,7 +2,7 @@
 
 .dot {
   background-color: $color-primary;
-  border-radius: 50%;
+  border-radius: $border-radius-circle;
   display: inline-block;
   height: 6px;
   width: 6px;

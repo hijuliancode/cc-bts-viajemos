@@ -1,6 +1,7 @@
 @use '../01-settings/colors' as *;
 @use '../01-settings/typography' as *;
 @use '../01-settings/spacing' as *;
+@use '../01-settings/radius' as *;
 @use '../02-tools/mixins' as *;
 @use '../02-tools/breakpoints' as *;
 @use '../02-tools/animations' as *;
@@ -13,7 +14,7 @@ $brand-gray-light: #F9FAFB;
 
 .card {
   background-color: var(--bg-surface);
-  border-radius: 1.375rem;
+  border-radius: $border-radius-3xl;
   border: 1px solid rgba(var(--border-color), 0.6);
   color: var(--text-color);
   padding: $spacing-4;
@@ -222,7 +223,7 @@ $brand-gray-light: #F9FAFB;
         background-color: var(--bg-surface);
         color: $color-success;
         border: 1px solid $color-success;
-        border-radius: 50%;
+        border-radius: $border-radius-circle;
         padding: $spacing-1;
         display: flex;
         align-items: center;
@@ -343,7 +344,7 @@ $brand-gray-light: #F9FAFB;
           color: $color-primary;
           border: 1px solid $color-primary;
           padding: $spacing-1 $spacing-3;
-          border-radius: $spacing-2;
+          border-radius: $border-radius-lg;
           font-size: $font-size-xs;
           font-weight: $font-weight-bold;
         }
@@ -353,7 +354,7 @@ $brand-gray-light: #F9FAFB;
              color: $color-purple;
              border: 1px solid $color-purple;
              padding: $spacing-1 $spacing-3;
-             border-radius: $spacing-2;
+             border-radius: $border-radius-lg;
              font-size: $font-size-xs;
              font-weight: $font-weight-bold;
         }
@@ -405,7 +406,7 @@ $brand-gray-light: #F9FAFB;
         .discount-badge {
           background-color: var(--color-error);
           color: white;
-          border-radius: 50rem;
+          border-radius: $border-radius-pill;
           font-size: $font-size-xs;
           font-weight: $font-weight-bold;
           padding: 0.1rem $spacing-2;
@@ -440,7 +441,7 @@ $brand-gray-light: #F9FAFB;
       }
 
       .btn-reserve {
-        border-radius: $spacing-2; // Slightly rounded corners
+        border-radius: $border-radius-lg;
         border: none;
         cursor: pointer;
         font-size: 0.9375rem;
