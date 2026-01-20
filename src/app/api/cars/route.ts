@@ -91,7 +91,7 @@ export async function GET() {
             discount_percentage: 45,
             inclusions: ["Seguro Auto Rentado", "Seguro a Terceros"],
             is_recommended: false,
-            is_offer: true, // Specific for the purple badge logic if needed separate from tags
+            is_offer: true,
             button_text: "Default"
           },
           {

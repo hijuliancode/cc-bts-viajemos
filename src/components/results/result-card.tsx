@@ -10,7 +10,6 @@ interface ResultCardProps {
 export default function ResultCard({ car }: ResultCardProps) {
   const { vendor, car: carInfo, pricing, badge, badge_image } = car;
 
-  // Helper to format currency
   const formatCurrency = (value: number) => `$${value.toLocaleString("es-CO")}`;
 
   const recommendedOption =
@@ -22,10 +21,8 @@ export default function ResultCard({ car }: ResultCardProps) {
   return (
     <div className="card card--result mb-3 shadow-sm border-0">
       <div className="card-body p-4">
-        <div className="row g-4">
-          {/* Left Column: Car Info */}
+        <div className="row gap-4">
           <div className="col-lg-5 border-end-lg">
-            {/* Vendor & Rating */}
             <div className="d-flex align-items-center gap-3 mb-3">
               <div style={{ width: 80, height: 30, position: "relative" }}>
                 <Image
@@ -46,18 +43,17 @@ export default function ResultCard({ car }: ResultCardProps) {
 
               <div className="d-flex align-items-center text-muted small">
                 <Image
-                  src={vendor.logo} // Fallback or generic icon if needed, but we use text for location
+                  src={vendor.logo}
                   alt=""
                   width={14}
                   height={14}
-                  className="me-1 d-none" // Hide for now as we don't have plane icon in assets listed
+                  className="me-1 d-none"
                 />
                 <span className="text-primary">✈</span>
                 <span className="ms-1">{car.location.pickup_location}</span>
               </div>
             </div>
 
-            {/* Car Image & Details */}
             <div className="position-relative mb-3">
               <div
                 className="d-flex align-items-center justify-content-center mb-3"
@@ -195,7 +191,6 @@ export default function ResultCard({ car }: ResultCardProps) {
               </div>
             )}
 
-            {/* Basic Option */}
             {basicOption && (
               <div className="opacity-75">
                 <div className="row align-items-center">

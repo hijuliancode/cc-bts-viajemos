@@ -1,0 +1,97 @@
+@use '../01-settings/breakpoints' as *;
+
+$flex-directions: row, row-reverse, column, column-reverse;
+$justify-content: start, end, center, space-between, space-around, space-evenly;
+$align-items: start, end, center, baseline, stretch;
+$flex-wraps: nowrap, wrap, wrap-reverse;
+
+@each $value in $flex-directions {
+  .flex-#{$value} {
+    flex-direction: $value !important;
+  }
+}
+
+@each $value in $justify-content {
+  .justify-content-#{$value} {
+    // Map simplified names to actual values where needed
+    @if $value == start {
+      justify-content: flex-start !important;
+    } @else if $value == end {
+      justify-content: flex-end !important;
+    } @else {
+      justify-content: $value !important;
+    }
+  }
+}
+
+@each $value in $align-items {
+  .align-items-#{$value} {
+    @if $value == start {
+      align-items: flex-start !important;
+    } @else if $value == end {
+      align-items: flex-end !important;
+    } @else {
+      align-items: $value !important;
+    }
+  }
+}
+
+@each $value in $flex-wraps {
+  .flex-#{$value} {
+    flex-wrap: $value !important;
+  }
+}
+
+.flex-fill {
+  flex: 1 1 auto !important;
+}
+
+.flex-grow-0 {
+  flex-grow: 0 !important;
+}
+
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
+
+.flex-shrink-1 {
+  flex-shrink: 1 !important;
+}
+
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    @each $value in $flex-directions {
+      .flex-#{$breakpoint}-#{$value} {
+        flex-direction: $value !important;
+      }
+    }
+    
+    @each $value in $justify-content {
+      .justify-content-#{$breakpoint}-#{$value} {
+        @if $value == start {
+          justify-content: flex-start !important;
+        } @else if $value == end {
+          justify-content: flex-end !important;
+        } @else {
+          justify-content: $value !important;
+        }
+      }
+    }
+
+    @each $value in $align-items {
+      .align-items-#{$breakpoint}-#{$value} {
+        @if $value == start {
+          align-items: flex-start !important;
+        } @else if $value == end {
+          align-items: flex-end !important;
+        } @else {
+          align-items: $value !important;
+        }
+      }
+    }
+  }
+}

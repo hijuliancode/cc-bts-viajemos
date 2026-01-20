@@ -1,0 +1,19 @@
+@use '../01-settings/breakpoints' as *;
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex, grid;
+
+@each $value in $displays {
+  .d-#{$value} {
+    display: $value !important;
+  }
+}
+
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    @each $value in $displays {
+      .d-#{$breakpoint}-#{$value} {
+        display: $value !important;
+      }
+    }
+  }
+}

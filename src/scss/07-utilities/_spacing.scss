@@ -1,9 +1,8 @@
-@use '../01-settings/breakpoints' as *;
 @use '../01-settings/spacing' as *;
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 
-// Utility generator for spacing
 $utilities: (
   "m": "margin",
   "p": "padding"
@@ -19,8 +18,6 @@ $directions: (
   "y": ("-top", "-bottom")
 );
 
-@use "sass:meta";
-
 @each $prop-key, $prop-value in $utilities {
   @each $dir-key, $dir-value in $directions {
     @each $size-key, $size-value in $spacers {
@@ -34,12 +31,5 @@ $directions: (
         }
       }
     }
-  }
-}
-
-// Gap utilities for flex/grid
-@each $key, $value in $spacers {
-  .gap-#{$key} {
-    gap: $value;
   }
 }

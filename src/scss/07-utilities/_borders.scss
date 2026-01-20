@@ -1,0 +1,23 @@
+@use '../01-settings/colors' as *;
+
+.border { border: 1px solid $color-gray-200 !important; }
+.border-0 { border: 0 !important; }
+.border-top { border-top: 1px solid $color-gray-200 !important; }
+.border-bottom { border-bottom: 1px solid $color-gray-200 !important; }
+.border-start { border-left: 1px solid $color-gray-200 !important; }
+.border-end { border-right: 1px solid $color-gray-200 !important; }
+
+.border-success { border-color: $color-success !important; }
+.border-primary { border-color: $color-primary !important; }
+.border-purple { border-color: $color-purple !important; }
+
+// Responsive borders
+@media (min-width: 992px) {
+  .border-end-lg {
+    border-right: 1px solid $color-gray-200 !important;
+  }
+}
+
+.rounded { border-radius: 0.25rem !important; }
+.rounded-circle { border-radius: 50% !important; }
+.rounded-pill { border-radius: 50rem !important; }
