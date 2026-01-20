@@ -17,8 +17,8 @@ export default function CarFeatures({
   const t = useTranslations("Features");
 
   return (
-    <div className="car-features d-flex gap-4 text-muted mt-2">
-      <div className="d-flex align-items-center gap-2" title={t("passengers")}>
+    <div className="card__features">
+      <div className="feature-item" title={t("passengers")}>
         <Image
           src="/design/icons/people.svg"
           alt={t("passengers")}
@@ -27,7 +27,7 @@ export default function CarFeatures({
         />
         <span>{passengers}</span>
       </div>
-      <div className="d-flex align-items-center gap-2" title={t("bags")}>
+      <div className="feature-item" title={t("bags")}>
         <Image
           src="/design/icons/shopping-bag.svg"
           alt={t("bags")}
@@ -37,7 +37,7 @@ export default function CarFeatures({
         <span>{bags}</span>
       </div>
       {has_ac && (
-        <div className="d-flex align-items-center gap-2" title={t("ac")}>
+        <div className="feature-item" title={t("ac")}>
           <Image
             src="/design/icons/frozen.svg"
             alt={t("ac")}
@@ -47,10 +47,7 @@ export default function CarFeatures({
           <span>A/C</span>
         </div>
       )}
-      <div
-        className="d-flex align-items-center gap-2"
-        title={t("transmission")}
-      >
+      <div className="feature-item" title={t("transmission")}>
         <Image
           src="/design/icons/transmition.svg"
           alt={t("transmission")}

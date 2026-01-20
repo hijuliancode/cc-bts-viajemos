@@ -33,80 +33,54 @@ export default function ResultCard({ car }: ResultCardProps) {
     pricing.options.find((opt) => opt.type === "basic") || pricing.options[1];
 
   return (
-    <div className="card card--result mb-3">
-      <div className="card-body">
-        <div className="row gap-4">
+    <div className="card card--result">
+      <div className="card__body">
+        <div className="card__layout">
           {/* Left Column: Car Info & Features */}
-          <div className="col-lg-5 border-end-lg p-4 relative w-100 w-lg-auto">
-            <div className="card-header">
-              <div className="d-flex gap-2">
-                <div
-                  className="relative mr-2"
-                  style={{ width: 80, height: 30 }}
-                >
-                  <Image
-                    src={vendor.logo}
-                    alt={vendor.name}
-                    fill
-                    style={{
-                      objectFit: "contain",
-                      objectPosition: "left center",
-                    }}
-                    className="bg-surface rounded"
-                  />
-                </div>
-
-                <div className="divider-vertical relative top-2"></div>
-
-                <div className="card-header__rating">
-                  <Star
-                    size={14}
-                    fill="currentColor"
-                    className="text-green mr-1"
-                  />
-                  <span className="fw-medium me-1 text-gray-300">
-                    {vendor.rating}
-                  </span>
-                </div>
-              </div>
-
-              <div className="card-header__location">
+          <div className="card__section card__section--info">
+            <div className="card__header">
+              <div className="card__vendor-logo">
                 <Image
                   src={vendor.logo}
-                  alt=""
-                  width={14}
-                  height={14}
-                  className="me-1 d-none"
+                  alt={vendor.name}
+                  fill
+                  style={{
+                    objectFit: "contain",
+                    objectPosition: "left center",
+                  }}
                 />
-                <span className="text-primary mr-2">
-                  <PlaneIcon size={14} />
-                </span>
-                <span className="ms-1">{car.location.pickup_location}</span>
+              </div>
+
+              <div className="vr"></div>
+
+              <div className="card__rating">
+                <Star size={14} className="icon" />
+                <span className="value">{vendor.rating}</span>
+              </div>
+
+              <div className="card__location">
+                <PlaneIcon size={14} className="icon-primary" />
+                <span className="text">{car.location.pickup_location}</span>
                 <ChevronRightIcon size={14} />
               </div>
             </div>
 
-            <div className="car-data">
-              <div className="car-data__photo relative">
-                <div
-                  className="d-flex align-items-center justify-content-center mb-3"
-                  style={{ height: "80px", position: "relative" }}
-                >
+            <div className="card__vehicle-details">
+              <div className="card__vehicle-image">
+                <div className="image-wrapper">
                   <Image
                     src={carInfo.image_url}
                     alt={carInfo.name}
                     fill
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: "contain", objectPosition: "center" }}
                     priority
                   />
                 </div>
               </div>
-
-              <div className="car__name-features">
-                <p className="car-data__category">{carInfo.category}</p>
-                <h3 className="car-data__name gap-2 fw-bold mb-1">
-                  {carInfo.name}
-                  <span className="text-primary fw-normal">o Similar</span>
+              <div className="card__vehicle-info">
+                <p className="category">{carInfo.category}</p>
+                <h3 className="name">
+                  {carInfo.name} <span className="similar">o Similar</span>
                 </h3>
 
                 <CarFeatures
@@ -120,10 +94,7 @@ export default function ResultCard({ car }: ResultCardProps) {
 
             {/* Travel Insurance Badge */}
             {(badge_image || badge) && (
-              <div
-                className="absolute top-4 right-4"
-                style={{ width: 60, height: 60 }}
-              >
+              <div className="card__insurance-badge">
                 {badge_image ? (
                   <Image
                     src={badge_image}
@@ -132,8 +103,8 @@ export default function ResultCard({ car }: ResultCardProps) {
                     style={{ objectFit: "contain" }}
                   />
                 ) : (
-                  <div className="badge bg-gray-100 dark:bg-gray-800 text-success border border-success rounded-circle p-2">
-                    <ShieldCheck size={24} />
+                  <div className="badge-fallback">
+                    <ShieldCheck size={30} />
                   </div>
                 )}
               </div>
@@ -141,58 +112,46 @@ export default function ResultCard({ car }: ResultCardProps) {
           </div>
 
           {/* Right Column: Pricing Options */}
-          <div className="d-flex flex-column justify-content-between">
-            {/* Recommended Option */}
-            {recommendedOption && (
-              <div className="border-bottom pb-4 mb-4">
-                <div className="row align-items-center">
-                  <div className="col-md-7">
-                    <h5 className="fw-bold text-primary mb-1">
-                      {recommendedOption.name}{" "}
-                      <span className="text-muted fw-normal fs-6">
-                        - {recommendedOption.description}
-                      </span>
-                    </h5>
+          <div className="card__section card__section--pricing">
+            <div className="card__pricing-container">
+              {/* Recommended Option */}
+              {recommendedOption && (
+                <div className="card__pricing-option card__pricing-option--recommended">
+                  <div className="option-content">
+                    <div className="option-details">
+                      <h5 className="title">
+                        {recommendedOption.name}{" "}
+                        <span className="description">
+                          - {recommendedOption.description}
+                        </span>
+                      </h5>
 
-                    <div className="d-flex gap-3 mb-2 flex-wrap">
-                      {recommendedOption.inclusions.map((inclusion, idx) => (
-                        <div
-                          key={idx}
-                          className="d-flex align-items-center text-success small fw-medium"
-                        >
-                          <ShieldCheck size={16} className="me-1" />
-                          {inclusion}
+                      <div className="inclusions">
+                        {recommendedOption.inclusions.map((inclusion, idx) => (
+                          <div key={idx} className="inclusion-item">
+                            <ShieldCheck size={14} className="icon" />
+                            {inclusion}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="actions">
+                        <div className="view-details">
+                          {t("view_details")} <Info size={14} />
                         </div>
-                      ))}
+                        {recommendedOption.is_recommended && (
+                          <span className="badge-recommended">
+                            {t("recommended")}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="d-flex align-items-center gap-2">
-                      <a
-                        href="#"
-                        className="text-muted small text-decoration-none d-flex align-items-center gap-1"
-                      >
-                        {t("view_details")} <Info size={14} />
-                      </a>
-                      {recommendedOption.is_recommended && (
-                        <span className="badge bg-surface text-primary border border-primary px-2 py-1 rounded-pill">
-                          {t("recommended")}
-                        </span>
-                      )}
-                      {recommendedOption.is_offer && (
-                        <span className="badge bg-surface text-purple border border-purple px-2 py-1 rounded-pill">
-                          {t("offer")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-md-5 text-end">
-                    <div className="d-flex flex-column align-items-end">
-                      {(recommendedOption.original_price_per_day ||
-                        recommendedOption.discount_percentage) && (
-                        <div className="mb-1">
+                    <div className="option-price">
+                      <div className="price-header">
+                        <div className="price-meta">
                           {recommendedOption.original_price_per_day && (
-                            <span className="text-muted text-decoration-line-through small me-2">
+                            <span className="original-price">
                               {t("before")}{" "}
                               {formatCurrency(
                                 recommendedOption.original_price_per_day,
@@ -200,100 +159,93 @@ export default function ResultCard({ car }: ResultCardProps) {
                             </span>
                           )}
                           {recommendedOption.discount_percentage && (
-                            <span className="badge bg-danger rounded-pill">
+                            <span className="discount-badge">
                               -{recommendedOption.discount_percentage}%
                             </span>
                           )}
                         </div>
-                      )}
 
-                      <div className="d-flex align-items-baseline justify-content-end mb-1">
-                        <span className="h3 fw-bold mb-0 text-dark">
-                          {formatCurrency(recommendedOption.price_per_day)}
-                        </span>
-                        <span className="text-muted small ms-1">| dia</span>
-                      </div>
-
-                      <div className="text-muted small mb-2">
-                        Total {formatCurrency(recommendedOption.total_price)}
-                      </div>
-
-                      <button className="btn btn-info text-white fw-bold px-4 w-100">
-                        {recommendedOption.button_text}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {basicOption && (
-              <div className="opacity-75 d-none d-lg-block">
-                <div className="row align-items-center">
-                  <div className="col-md-7">
-                    <h5 className="fw-bold text-body mb-1">
-                      {basicOption.name}{" "}
-                      <span className="text-muted fw-normal fs-6">
-                        - {basicOption.description}
-                      </span>
-                    </h5>
-
-                    <div className="d-flex gap-3 mb-2">
-                      {basicOption.inclusions.map((inclusion, idx) => (
-                        <div
-                          key={idx}
-                          className="d-flex align-items-center text-muted small"
-                        >
-                          <Ban size={16} className="me-1" />
-                          {inclusion}
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="d-flex align-items-center gap-2">
-                      <a
-                        href="#"
-                        className="text-muted small text-decoration-none d-flex align-items-center gap-1"
-                      >
-                        {t("view_details")} <Info size={14} />
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="col-md-5 text-end">
-                    <div className="d-flex flex-column align-items-end">
-                      {basicOption.original_price_per_day && (
-                        <div className="mb-1">
-                          <span className="text-muted text-decoration-line-through small">
-                            {t("before")}{" "}
-                            {formatCurrency(basicOption.original_price_per_day)}
+                        <div className="main-price">
+                          <span className="amount">
+                            {formatCurrency(recommendedOption.price_per_day)}
                           </span>
+                          <span className="period">| {t("day")}</span>
                         </div>
-                      )}
 
-                      <div className="d-flex align-items-baseline justify-content-end mb-1">
-                        <span className="h3 fw-bold mb-0 text-body">
-                          {formatCurrency(basicOption.price_per_day)}
-                        </span>
-                        <span className="text-muted small ms-1">
-                          {t("day")}
-                        </span>
+                        <div className="total-price">
+                          Total {formatCurrency(recommendedOption.total_price)}
+                        </div>
+
+                        <button className="btn-reserve">
+                          {recommendedOption.button_text}
+                        </button>
                       </div>
-
-                      <div className="text-muted small mb-2">
-                        {t("total")} {formatCurrency(basicOption.total_price)}
-                      </div>
-
-                      <button className="btn btn-outline-primary fw-bold px-4 w-100">
-                        {basicOption.button_text === "Reservar"
-                          ? t("reserve")
-                          : t("default")}
-                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+
+              {/* Basic Option */}
+              {basicOption && (
+                <div className="card__pricing-option card__pricing-option--basic">
+                  <div className="option-content">
+                    <div className="option-details">
+                      <h5 className="title">
+                        {basicOption.name}{" "}
+                        <span className="description">
+                          - {basicOption.description}
+                        </span>
+                      </h5>
+
+                      <div className="inclusions">
+                        <div className="inclusion-item muted">
+                          <Ban size={14} className="icon" />
+                          {t("no_insurance_rate") || "Tarifa sin Seguros"}
+                        </div>
+                      </div>
+
+                      <div className="actions">
+                        <div className="view-details">
+                          {t("view_details")} <Info size={14} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="option-price">
+                      <div className="price-header">
+                        {basicOption.original_price_per_day && (
+                          <div className="price-meta">
+                            <span className="original-price">
+                              {t("before")}{" "}
+                              {formatCurrency(
+                                basicOption.original_price_per_day,
+                              )}
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="main-price">
+                          <span className="amount">
+                            {formatCurrency(basicOption.price_per_day)}
+                          </span>
+                          <span className="period">| {t("day")}</span>
+                        </div>
+
+                        <div className="total-price">
+                          {t("total")} {formatCurrency(basicOption.total_price)}
+                        </div>
+
+                        <button className="btn-reserve btn-reserve--outline">
+                          {basicOption.button_text === "Reservar"
+                            ? t("reserve")
+                            : t("default")}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

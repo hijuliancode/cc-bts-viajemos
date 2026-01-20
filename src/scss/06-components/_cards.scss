@@ -1,12 +1,26 @@
+@use '../01-settings/colors' as *;
+@use '../01-settings/typography' as *;
 @use '../02-tools/mixins' as *;
+
+// Brand Colors (Local override if not in settings)
+$brand-black: #000000;
+$brand-navy: #1e1e3f;
+$brand-cyan: #00C3E3;
+$brand-gray-light: #F9FAFB;
 
 .card {
   background-color: var(--bg-surface);
   border-radius: 22px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(var(--border-color), 0.6); // Softer border
   color: var(--text-color);
   padding: 16px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); // Softer shadow
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba($brand-cyan, 0.3);
+  }
 
   &--sidebar {
     border: none;
@@ -20,61 +34,428 @@
 
   &--result {
     padding: 0;
+    overflow: hidden;
+    margin-bottom: 1.5rem; // Increased spacing
 
-    .card-header {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 12px;
+    .card__body {
+      padding: 0;
+    }
 
-      &__rating {
-        @include flex-center;
-        border-radius: 12px;
-        color: var(--text-white);
-        font-size: 0.875rem;
-        padding: 0.25rem 0.5rem;
-      }
+    .card__layout {
+      display: flex;
+      flex-direction: column;
 
-      &__location {
-        align-items: center;
-        color: var(--text-muted);
-        display: flex;
-        font-size: 0.875rem;
+      @media (min-width: 992px) {
+        flex-direction: row;
       }
     }
-    
-    .car-data {
-      display: flex;
-      flex-direction: row;
-      gap: 6px;
 
-      .car-data__photo {
-        // grid-area: car-photo;
-        width: 40%;
+    // --- Left Section: Car Info ---
+    .card__section {
+      position: relative;
+      padding: 1.5rem;
+
+      &--info {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+
+        @media (min-width: 992px) {
+          width: 41.666667%; // col-lg-5
+          border-bottom: 0;
+          border-right: 1px solid var(--border-color);
+        }
+      }
+
+      &--pricing {
+        width: 100%;
+        padding: 0;
+
+        @media (min-width: 992px) {
+          width: 58.333333%; // col-lg-7
+        }
+      }
+    }
+
+    .card__header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .card__vendor-logo {
+      position: relative;
+      width: 80px;
+      height: 24px;
+    }
+
+    .vr {
+      display: inline-block;
+      align-self: stretch;
+      width: 1px;
+      min-height: 1em;
+      background-color: currentColor;
+      opacity: 0.15;
+    }
+
+    .card__rating {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      
+      .icon {
+        color: var(--color-success);
+        fill: currentColor;
       }
       
-      .car-data__name {
+      .value {
+        font-weight: 700;
+        color: var(--text-color);
+        font-size: 0.875rem;
+      }
+    }
+
+    .card__location {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+
+      .icon-primary {
+        color: $brand-cyan; // Cyan icon
+      }
+      
+      .text {
+        font-size: 0.75rem;
+      }
+    }
+
+    // Mobile First: Side-by-side layout for Image + Info
+    .card__vehicle-details {
+      display: flex;
+      align-items: flex-start; // Align top to match design
+      flex-wrap: nowrap; // Ensure side-by-side on mobile
+      gap: 1rem;
+    }
+
+    .card__vehicle-image {
+      width: 40%; 
+      flex-shrink: 0;
+      
+      .image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100px; // Fixed height for consistency
+      }
+    }
+
+    .card__vehicle-info {
+      width: 60%;
+      padding-left: 0; // Removed padding as gap handles it
+
+      .category {
+        color: $brand-black; // Black as per design
+        font-weight: 800;
+        margin-bottom: 0.125rem;
+        font-size: 1.125rem;
+        line-height: 1.2;
+      }
+
+      .name {
+        font-weight: 700;
+        color: $brand-navy; // Dark Blue/Purple tone from design
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.2;
+
+        .similar {
+          color: $brand-cyan; // Cyan for "o Similar"
+          font-weight: 400;
+          font-size: 0.875rem;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+
+    .card__features {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      
+      .feature-item {
         display: flex;
-        margin: 0;
-        font-size: 14px;;
-      }
-
-      .car-data__category {
-        font-weight: 600;
-        margin: 0 0 4px;
-      }
-
-      .car-features {
-        // grid-area: car-features;
+        align-items: center;
+        gap: 0.35rem;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        font-weight: 500;
+        
+        // Ensure icons are grayscale/muted if they are svg
+        img {
+          opacity: 0.7;
+        }
       }
     }
 
-    .card-body {
-      padding: 16px;
+    .card__insurance-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 60px;
+      height: 60px;
+      z-index: 10;
+
+      @media (min-width: 992px) {
+        width: 70px;
+        height: 70px;
+      }
+
+      .badge-fallback {
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-surface);
+        color: var(--color-success);
+        border: 1px solid var(--color-success);
+        border-radius: 50%;
+        padding: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    // --- Right Section: Pricing ---
+    .card__pricing-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card__pricing-option {
+      padding: 1.5rem;
+      flex: 1 1 auto;
+
+      &--recommended {
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-surface);
+      }
+
+      &--basic {
+        background-color: $brand-gray-light; // Light gray for basic
+        
+        @include dark-mode {
+          background-color: rgba(17, 24, 39, 0.5); 
+        }
+      }
+
+      .option-content {
+        display: flex;
+        flex-direction: column; // Stack vertically on mobile
+        height: 100%;
+        
+        @media (min-width: 768px) {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+
+      .option-details {
+        margin-bottom: 1rem;
+        width: 100%;
+        
+        @media (min-width: 768px) {
+          width: 58.333333%; // col-md-7
+          margin-bottom: 0;
+        }
+
+        .title {
+          font-weight: 700;
+          margin-bottom: 0.25rem;
+          font-size: 1rem;
+          color: $brand-cyan; // Cyan for "Con Seguros"
+
+          .description {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.875rem;
+          }
+        }
+      }
+
+      // Override for basic option title color
+      &--basic .option-details .title {
+        color: $brand-navy; // Dark text for "Sin Seguros"
+      }
+
+      .inclusions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        margin-bottom: 0.75rem;
+
+        .inclusion-item {
+          display: flex;
+          align-items: center;
+          color: var(--color-green); // Green text
+          font-size: 0.75rem;
+          font-weight: 600;
+
+          .icon {
+            margin-right: 0.25rem;
+            color: var(--color-green);
+          }
+          
+          &.muted {
+             color: var(--text-muted);
+             font-weight: 400;
+             .icon { color: var(--text-muted); }
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .view-details {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          color: var(--text-muted);
+          font-size: 0.75rem;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        .badge-recommended {
+          background-color: transparent;
+          color: var(--color-primary); // Use primary blue for outline
+          border: 1px solid var(--color-primary);
+          padding: 0.25rem 0.75rem;
+          border-radius: 0.5rem; // Rounded rect
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+        
+        .badge-offer {
+             background-color: transparent;
+             color: var(--color-purple);
+             border: 1px solid var(--color-purple);
+             padding: 0.25rem 0.75rem;
+             border-radius: 0.5rem;
+             font-size: 0.75rem;
+             font-weight: 700;
+        }
+      }
+
+      .option-price {
+        width: 100%;
+        display: flex;
+        flex-direction: row; 
+        justify-content: flex-end;
+
+        @media (min-width: 768px) {
+          width: 41.666667%; // col-md-5
+        }
+      }
+
+      .price-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; // Right align everything
+        width: 100%;
+      }
+
+      .price-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.25rem;
+
+        .original-price {
+          color: var(--text-muted);
+          text-decoration: line-through;
+          font-size: 0.75rem;
+        }
+
+        .discount-badge {
+          background-color: var(--color-error); // Red
+          color: white;
+          border-radius: 50rem;
+          font-size: 0.75rem;
+          font-weight: 700;
+          padding: 0.1rem 0.5rem;
+        }
+      }
+
+      .main-price {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        margin-bottom: 0.125rem;
+
+        .amount {
+          font-size: 1.75rem; // Large price
+          font-weight: 800;
+          color: $color-gray-900; // Dark black
+          line-height: 1;
+        }
+
+        .period {
+          color: var(--text-muted);
+          font-size: 0.75rem;
+          margin-left: 0.25rem;
+        }
+      }
+
+      .total-price {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+
+      .btn-reserve {
+        width: 100%;
+        padding: 0.6rem 1.5rem;
+        font-weight: 700;
+        border-radius: 0.5rem; // Slightly rounded corners
+        transition: all 0.2s ease;
+        border: none;
+        font-size: 0.9375rem;
+        cursor: pointer;
+        
+        // Gradient Button (Cyan)
+        background: linear-gradient(90deg, #00C3E3 0%, #00A8C5 100%);
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 195, 227, 0.2);
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 12px rgba(0, 195, 227, 0.3);
+        }
+
+        &--outline {
+          background: transparent;
+          color: var(--color-primary);
+          border: 1px solid var(--color-primary);
+          box-shadow: none;
+
+          &:hover {
+             background-color: rgba(0, 112, 243, 0.05);
+             transform: translateY(-1px);
+          }
+        }
+        
+        // Responsive width
+        @media (min-width: 768px) {
+            width: auto;
+            min-width: 140px;
+        }
+      }
     }
   }
 }
