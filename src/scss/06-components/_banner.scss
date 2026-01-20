@@ -1,19 +1,20 @@
+@use '../01-settings' as *;
 @use '../02-tools/mixins' as *;
 
 .banner {
   background-color: var(--bg-banner);
   color: var(--text-color);
-  padding: 0.5rem 0;
+  padding: $spacing-2 0;
   
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    gap: $spacing-2;
   }
 
   &__title {
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     color: var(--text-color);
     margin: 0;
   }
@@ -23,12 +24,12 @@
     
     small {
       display: block;
-      font-size: 0.75rem;
+      font-size: $font-size-xs;
       color: var(--text-muted);
     }
     
     strong {
-      font-size: 1.25rem;
+      font-size: $font-size-xl;
       color: var(--text-color);
     }
   }

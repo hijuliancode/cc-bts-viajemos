@@ -1,7 +1,8 @@
 
+@use '../01-settings' as *;
 
 .divider-vertical {
-  background-color: #F2F3F9;
-  height: 16px;
+  background-color: $color-gray-100;
+  height: $spacing-4;
   width: 1px;
 }

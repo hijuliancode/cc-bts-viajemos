@@ -1,5 +1,6 @@
 @use '../01-settings/colors' as *;
 @use '../01-settings/typography' as *;
+@use '../01-settings/spacing' as *;
 @use '../02-tools/mixins' as *;
 
 // Brand Colors (Local override if not in settings)
@@ -13,7 +14,7 @@ $brand-gray-light: #F9FAFB;
   border-radius: 22px;
   border: 1px solid rgba(var(--border-color), 0.6); // Softer border
   color: var(--text-color);
-  padding: 16px;
+  padding: $spacing-4;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); // Softer shadow
 
@@ -33,12 +34,12 @@ $brand-gray-light: #F9FAFB;
   }
 
   &--result {
-    padding: 0;
+    padding: $spacing-0;
     overflow: hidden;
-    margin-bottom: 1.5rem; // Increased spacing
+    margin-bottom: $spacing-6; // Increased spacing
 
     .card__body {
-      padding: 0;
+      padding: $spacing-0;
     }
 
     .card__layout {
@@ -53,7 +54,7 @@ $brand-gray-light: #F9FAFB;
     // --- Left Section: Car Info ---
     .card__section {
       position: relative;
-      padding: 1.5rem;
+      padding: $spacing-6;
 
       &--info {
         width: 100%;
@@ -68,7 +69,7 @@ $brand-gray-light: #F9FAFB;
 
       &--pricing {
         width: 100%;
-        padding: 0;
+        padding: $spacing-0;
 
         @media (min-width: 992px) {
           width: 58.333333%; // col-lg-7
@@ -79,12 +80,12 @@ $brand-gray-light: #F9FAFB;
     .card__header {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: $spacing-4;
+      margin-bottom: $spacing-4;
     }
 
     .card__vendor-logo {
-      height: 24px;
+      height: $spacing-6;
       position: relative;
       width: 60px;
     }
@@ -101,7 +102,7 @@ $brand-gray-light: #F9FAFB;
     .card__rating {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: $spacing-1;
       
       .icon {
         color: $color-success;
@@ -109,25 +110,25 @@ $brand-gray-light: #F9FAFB;
       }
       
       .value {
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         color: var(--text-color);
-        font-size: 0.875rem;
+        font-size: $font-size-sm;
       }
     }
 
     .card__location {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: $spacing-1;
       color: var(--text-muted);
-      font-size: 0.75rem;
+      font-size: $font-size-xs;
 
       .icon-primary {
         color: $brand-cyan; // Cyan icon
       }
       
       .text {
-        font-size: 0.75rem;
+        font-size: $font-size-xs;
       }
     }
 
@@ -136,7 +137,7 @@ $brand-gray-light: #F9FAFB;
       display: flex;
       align-items: flex-start; // Align top to match design
       flex-wrap: nowrap; // Ensure side-by-side on mobile
-      gap: 1rem;
+      gap: $spacing-4;
     }
 
     .card__vehicle-image {
@@ -151,29 +152,29 @@ $brand-gray-light: #F9FAFB;
     }
 
     .card__vehicle-info {
-      padding-left: 0;
+      padding-left: $spacing-0;
       width: 60%;
 
       .category {
         color: $brand-black; // Black as per design
-        font-weight: 800;
+        font-weight: $font-weight-extrabold;
         margin-bottom: 0.125rem;
-        font-size: 1.125rem;
+        font-size: $font-size-lg;
         line-height: 1.2;
       }
 
       .name {
         color: $brand-navy; // Dark Blue/Purple tone from design
         font-size: 0.8rem;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         line-height: 1.2;
-        margin-bottom: 0.5rem;
+        margin-bottom: $spacing-2;
 
         .similar {
           color: $brand-cyan; // Cyan for "o Similar"
-          font-weight: 400;
-          font-size: 0.875rem;
-          margin-left: 0.25rem;
+          font-weight: $font-weight-normal;
+          font-size: $font-size-sm;
+          margin-left: $spacing-1;
         }
       }
     }
@@ -181,16 +182,16 @@ $brand-gray-light: #F9FAFB;
     .card__features {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-top: 0.5rem;
+      gap: $spacing-4;
+      margin-top: $spacing-2;
       
       .feature-item {
         display: flex;
         align-items: center;
         gap: 0.35rem;
         color: var(--text-muted);
-        font-size: 0.875rem;
-        font-weight: 500;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
         
         // Ensure icons are grayscale/muted if they are svg
         img {
@@ -202,15 +203,15 @@ $brand-gray-light: #F9FAFB;
     .card__insurance-badge {
       height: 60px;
       position: absolute;
-      right: 4rem;
-      top: 1rem;
+      right: $spacing-16;
+      top: $spacing-4;
       width: 60px;
       z-index: 10;
 
       @media (min-width: 992px) {
         height: 70px;
         width: 70px;
-        right: 1rem;
+        right: $spacing-4;
       }
 
       .badge-fallback {
@@ -220,7 +221,7 @@ $brand-gray-light: #F9FAFB;
         color: $color-success;
         border: 1px solid $color-success;
         border-radius: 50%;
-        padding: 0.25rem;
+        padding: $spacing-1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -235,7 +236,7 @@ $brand-gray-light: #F9FAFB;
     }
 
     .card__pricing-option {
-      padding: 1rem;
+      padding: $spacing-4;
       flex: 1 1 auto;
 
       &--recommended {
@@ -261,7 +262,7 @@ $brand-gray-light: #F9FAFB;
       }
 
       .option-details {
-        margin-bottom: 1rem;
+        margin-bottom: $spacing-4;
         width: 100%;
         
         @media (min-width: 768px) {
@@ -272,13 +273,13 @@ $brand-gray-light: #F9FAFB;
         .title {
           color: #0583FF; // Dark text for "Sin Seguros"
           font-size: 0.8rem;
-          font-weight: 700;
-          margin-bottom: 0.25rem;
+          font-weight: $font-weight-bold;
+          margin-bottom: $spacing-1;
 
           .description {
             color: var(--text-muted);
-            font-weight: 400;
-            font-size: 0.75rem;
+            font-weight: $font-weight-normal;
+            font-size: $font-size-xs;
           }
         }
       }
@@ -292,9 +293,9 @@ $brand-gray-light: #F9FAFB;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        gap: 4px;
-        margin-bottom: 0.75rem;
-        margin-top: 0.5rem;
+        gap: $spacing-1;
+        margin-bottom: $spacing-3;
+        margin-top: $spacing-2;
 
         @media (min-width: 768px) {
           flex-direction: row;
@@ -305,16 +306,16 @@ $brand-gray-light: #F9FAFB;
           color: $color-green; // Green text
           display: flex;
           font-size: 0.65rem;
-          font-weight: 400;
+          font-weight: $font-weight-normal;
 
           .icon {
-            margin-right: 0.25rem;
+            margin-right: $spacing-1;
             color: $color-green;
           }
           
           &.muted {
              color: var(--text-muted);
-             font-weight: 400;
+             font-weight: $font-weight-normal;
              .icon { color: var(--text-muted); }
           }
         }
@@ -323,15 +324,15 @@ $brand-gray-light: #F9FAFB;
       .actions {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: $spacing-3;
 
         .view-details {
           align-items: center;
           color: var(--text-muted);
           cursor: pointer;
           display: flex;
-          font-size: 0.75rem;
-          gap: 0.25rem;
+          font-size: $font-size-xs;
+          gap: $spacing-1;
           text-decoration: none;
         }
 
@@ -339,20 +340,20 @@ $brand-gray-light: #F9FAFB;
           background-color: transparent;
           color: $color-primary; // Use primary blue for outline
           border: 1px solid $color-primary;
-          padding: 0.25rem 0.75rem;
-          border-radius: 0.5rem; // Rounded rect
-          font-size: 0.75rem;
-          font-weight: 700;
+          padding: $spacing-1 $spacing-3;
+          border-radius: $spacing-2; // Rounded rect
+          font-size: $font-size-xs;
+          font-weight: $font-weight-bold;
         }
         
         .badge-offer {
              background-color: transparent;
              color: $color-purple;
              border: 1px solid $color-purple;
-             padding: 0.25rem 0.75rem;
-             border-radius: 0.5rem;
-             font-size: 0.75rem;
-             font-weight: 700;
+             padding: $spacing-1 $spacing-3;
+             border-radius: $spacing-2;
+             font-size: $font-size-xs;
+             font-weight: $font-weight-bold;
         }
       }
 
@@ -377,7 +378,7 @@ $brand-gray-light: #F9FAFB;
           flex-direction: row;
           align-items: center;
           justify-content: flex-end;
-          gap: 1rem;
+          gap: $spacing-4;
         }
       }
 
@@ -390,22 +391,22 @@ $brand-gray-light: #F9FAFB;
       .price-meta {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.25rem;
+        gap: $spacing-2;
+        margin-bottom: $spacing-1;
 
         .original-price {
           color: var(--text-muted);
           text-decoration: line-through;
-          font-size: 0.75rem;
+          font-size: $font-size-xs;
         }
 
         .discount-badge {
           background-color: var(--color-error); // Red
           color: white;
           border-radius: 50rem;
-          font-size: 0.75rem;
-          font-weight: 700;
-          padding: 0.1rem 0.5rem;
+          font-size: $font-size-xs;
+          font-weight: $font-weight-bold;
+          padding: 0.1rem $spacing-2;
         }
       }
 
@@ -416,33 +417,33 @@ $brand-gray-light: #F9FAFB;
         margin-bottom: 0.125rem;
 
         .amount {
-          font-size: 1rem; // Large price
-          font-weight: 800;
+          font-size: $font-size-base; // Large price
+          font-weight: $font-weight-extrabold;
           color: $color-gray-900; // Dark black
           line-height: 1;
         }
 
         .period {
           color: var(--text-muted);
-          font-size: 0.75rem;
-          margin-left: 0.25rem;
+          font-size: $font-size-xs;
+          margin-left: $spacing-1;
         }
       }
 
       .total-price {
         color: var(--text-muted);
-        font-size: 0.75rem;
-        margin-bottom: 0.75rem;
-        font-weight: 500;
+        font-size: $font-size-xs;
+        margin-bottom: $spacing-3;
+        font-weight: $font-weight-medium;
       }
 
       .btn-reserve {
-        border-radius: 0.5rem; // Slightly rounded corners
+        border-radius: $spacing-2; // Slightly rounded corners
         border: none;
         cursor: pointer;
         font-size: 0.9375rem;
-        font-weight: 700;
-        padding: 0.6rem 1.5rem;
+        font-weight: $font-weight-bold;
+        padding: 0.6rem $spacing-6;
         transition: all 0.2s ease;
         width: auto;
         
