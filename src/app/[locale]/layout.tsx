@@ -16,8 +16,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Viajemos.com",
-  description: "Renta de autos",
+  title: "Alquiler de Carros Baratos en Estados Unidos | Viajemos.com",
+  description:
+    "Reserva tu auto de alquiler con Viajemos.com. Encuentra las mejores tarifas en renta de autos en Estados Unidos, Europa y América Latina.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({

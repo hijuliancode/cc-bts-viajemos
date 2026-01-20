@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BTS Viajemos - Technical Test
 
-## Getting Started
+Este repositorio contiene la solución para la prueba técnica de **Maquetador React-Next.js** para Browser Travel Solutions.
 
-First, run the development server:
+## 🚀 Tecnologías
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+El proyecto ha sido construido utilizando un stack moderno y enfocado en rendimiento y escalabilidad:
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Lenguaje:** TypeScript
+- **Estilos:** SASS (SCSS) con arquitectura 7-1 y Design Tokens
+- **Estado/Data Fetching:** [TanStack Query](https://tanstack.com/query/latest) (React Query)
+- **Internacionalización:** `next-intl` (Soporte para ES, EN, PT)
+- **Iconos:** Lucide React
+
+## 🛠 Instalación y Uso
+
+1.  **Clonar el repositorio:**
+
+    ```bash
+    git clone https://github.com/hijuliancode/bts-viajemos.git
+    cd bts-viajemos
+    ```
+
+2.  **Instalar dependencias:**
+
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
+
+3.  **Correr el servidor de desarrollo:**
+
+    ```bash
+    npm run dev
+    ```
+
+    La aplicación estará disponible en `http://localhost:3000`.
+
+## 🏗 Arquitectura y Decisiones Técnicas
+
+### Estructura de Carpetas
+
+Se ha seguido una estructura modular para facilitar el mantenimiento:
+
+```
+src/
+├── app/              # Rutas de Next.js (App Router)
+├── components/       # Componentes React
+│   ├── ui/           # Componentes base (Botones, Dropdowns)
+│   ├── results/      # Componentes de negocio (Cards de autos)
+│   └── layouts/      # Estructuras de página
+├── hooks/            # Custom Hooks (Lógica separada de vista)
+├── scss/             # Estilos globales y tokens (Arquitectura ITCSS)
+├── services/         # Capa de comunicación con API
+└── i18n/             # Configuración de idiomas
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Sistema de Estilos (SASS)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Se implementó un sistema de **Design Tokens** para mantener la consistencia visual. Los estilos no están harcodeados en los componentes, sino que consumen variables de:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `_colors.scss`: Paleta de colores semántica.
+- `_spacing.scss`: Escala de espaciado.
+- `_typography.scss`: Tamaños y pesos de fuente.
+- `_breakpoints.scss`: Mixins para diseño Mobile-First.
 
-## Learn More
+### Accesibilidad (a11y)
 
-To learn more about Next.js, take a look at the following resources:
+Se han integrado mejoras de accesibilidad como:
+- Indicadores de foco visibles (`focus-ring`).
+- Soporte para `prefers-reduced-motion`.
+- Textos alternativos y estructura semántica.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌍 Internacionalización
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El proyecto soporta cambio de idioma dinámico. Las traducciones se encuentran en `messages/`.
+- Español (Default)
+- Inglés
+- Portugués
 
-## Deploy on Vercel
+## 🧪 API Mock
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Se utilizan **Next.js API Routes** (`src/app/api/`) para simular un backend real, permitiendo probar la carga de datos, estados de error y tiempos de respuesta.

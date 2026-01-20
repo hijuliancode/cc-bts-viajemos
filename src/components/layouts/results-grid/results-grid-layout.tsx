@@ -2,6 +2,8 @@
 
 import EconomyCarCard from "../../results/economy-car-card";
 import ResultCard from "../../results/result-card";
+import ResultCardSkeleton from "../../results/result-card-skeleton";
+import NoResults from "../../results/no-results";
 import { useCars } from "@/hooks/use-cars";
 import { useTranslations } from "next-intl";
 
@@ -11,11 +13,16 @@ export default function ResultsGridLayout() {
 
   if (isLoading) {
     return (
-      <div className="container py-4">
-        <div className="text-center py-5">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">{t("loading")}</span>
-          </div>
+      <div className="container">
+        <div className="d-flex flex-column flex-lg-row gap-4">
+          <aside className="w-100 w-lg-25 flex-shrink-0">
+             <EconomyCarCard /> {/* Or a Skeleton for this too if desired */}
+          </aside>
+          <main className="flex-fill">
+            <ResultCardSkeleton />
+            <ResultCardSkeleton />
+            <ResultCardSkeleton />
+          </main>
         </div>
       </div>
     );
@@ -37,9 +44,13 @@ export default function ResultsGridLayout() {
         </aside>
 
         <main className="flex-fill">
-          {cars?.map((car) => (
-            <ResultCard key={car.id} car={car} />
-          ))}
+          {cars && cars.length > 0 ? (
+            cars.map((car) => (
+              <ResultCard key={car.id} car={car} />
+            ))
+          ) : (
+            <NoResults />
+          )}
         </main>
       </div>
     </div>
