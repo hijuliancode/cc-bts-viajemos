@@ -2,12 +2,11 @@
 
 .card {
   background-color: var(--bg-surface);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
   border-radius: 0.75rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
   margin-bottom: 1.5rem;
+  padding: 1.5rem;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 
   &--sidebar {
@@ -16,9 +15,7 @@
     background: transparent;
     
     @media (min-width: 992px) {
-        background: var(--bg-surface);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      background: var(--bg-surface);
     }
   }
 
