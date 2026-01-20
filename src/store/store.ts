@@ -12,6 +12,8 @@ interface AppState {
   setCurrency: (currency: Currency) => void;
   language: string;
   setLanguage: (lang: string) => void;
+  country: string;
+  setCountry: (country: string) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -19,4 +21,6 @@ export const useAppStore = create<AppState>((set) => ({
   setCurrency: (currency) => set({ currency }),
   language: "Español",
   setLanguage: (language) => set({ language }),
+  country: "CO",
+  setCountry: (country) => set({ country }),
 }));

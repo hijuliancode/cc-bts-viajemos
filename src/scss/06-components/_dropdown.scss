@@ -1,3 +1,5 @@
+@use '../01-settings' as *;
+
 .dropdown {
   position: relative;
   cursor: pointer;
@@ -17,11 +19,6 @@
     min-width: 200px;
     z-index: 100;
     padding: 0.5rem 0;
-    // display: none; Removed to handle via React
-    
-    // &.is-open {
-    //   display: block;
-    // }
   }
   
   &__item {
@@ -31,7 +28,37 @@
     gap: 0.5rem;
     
     &:hover {
-      background-color: #f8f9fa;
+      background-color: $color-gray-100;
+    }
+  }
+
+  // Styles for detailed content (Language/Currency selectors) - Extracted from inline styles
+  &-menu-custom {
+    min-width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    
+    &--currency {
+      min-width: 280px;
+      max-height: 300px;
+    }
+  }
+
+  &-item-custom {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $color-gray-100;
+    }
+
+    &.selected {
+      background-color: rgba($color-primary, 0.1);
+      
+      &:hover {
+        background-color: rgba($color-primary, 0.1);
+      }
     }
   }
 }

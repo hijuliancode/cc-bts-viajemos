@@ -1,0 +1,50 @@
+{
+  "Header": {
+    "login": "Log In",
+    "help": "Help",
+    "currencies": {
+      "title": "Select your Currency"
+    },
+    "languages": {
+      "title": "Select your language",
+      "country_title": "Select your Country or Region"
+    }
+  },
+  "Banner": {
+    "prefix": "Great",
+    "results": "({count}) Results",
+    "from": "+ Large From",
+    "day": "| day"
+  },
+  "Results": {
+    "loading": "Loading...",
+    "error": "Error loading results"
+  },
+  "Features": {
+    "passengers": "Passengers",
+    "bags": "Bags",
+    "ac": "Air Conditioning",
+    "transmission": "Transmission",
+    "auto": "Auto",
+    "manual": "Man",
+    "automatic_transmission": "Automatic Transmission"
+  },
+  "EconomyCard": {
+    "title": "Economy"
+  },
+  "CarCard": {
+    "or_similar": "or Similar",
+    "passengers": "{count} Passengers",
+    "bags": "{count} Bags",
+    "ac": "Air Conditioning",
+    "transmission": "Automatic Transmission",
+    "view_details": "View Details",
+    "recommended": "Recommended",
+    "offer": "Today's Offer!",
+    "before": "Before",
+    "day": "| day",
+    "total": "Total",
+    "reserve": "Book Now",
+    "default": "Default"
+  }
+}

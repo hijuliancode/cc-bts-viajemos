@@ -41,8 +41,8 @@ export interface Car {
 }
 
 export const CarsService = {
-  getCars: async (): Promise<Car[]> => {
-    const response = await fetch('/api/cars');
+  getCars: async (locale: string = 'es'): Promise<Car[]> => {
+    const response = await fetch(`/api/cars?locale=${locale}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

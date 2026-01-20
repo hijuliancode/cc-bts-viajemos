@@ -1,0 +1,50 @@
+{
+  "Header": {
+    "login": "Entrar",
+    "help": "Ajuda",
+    "currencies": {
+      "title": "Selecione sua Moeda"
+    },
+    "languages": {
+      "title": "Selecione seu idioma",
+      "country_title": "Selecione seu País ou Região"
+    }
+  },
+  "Banner": {
+    "prefix": "Grandes",
+    "results": "({count}) Resultados",
+    "from": "+ Grandes Desde",
+    "day": "| dia"
+  },
+  "Results": {
+    "loading": "Carregando...",
+    "error": "Erro ao carregar resultados"
+  },
+  "Features": {
+    "passengers": "Passageiros",
+    "bags": "Malas",
+    "ac": "Ar Condicionado",
+    "transmission": "Transmissão",
+    "auto": "Auto",
+    "manual": "Man",
+    "automatic_transmission": "Câmbio Automático"
+  },
+  "EconomyCard": {
+    "title": "Econômico"
+  },
+  "CarCard": {
+    "or_similar": "ou Similar",
+    "passengers": "{count} Passageiros",
+    "bags": "{count} Malas",
+    "ac": "Ar Condicionado",
+    "transmission": "Câmbio Automático",
+    "view_details": "Ver Detalhes",
+    "recommended": "Recomendado",
+    "offer": "Oferta de Hoje!",
+    "before": "Antes",
+    "day": "| dia",
+    "total": "Total",
+    "reserve": "Reservar",
+    "default": "Padrão"
+  }
+}

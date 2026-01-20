@@ -3,12 +3,14 @@ import Image from "next/image";
 import CarFeatures from "./car-features";
 import { type Car } from "@/services/cars-service";
 import { useAppStore } from "@/store/store";
+import { useTranslations } from "next-intl";
 
 interface ResultCardProps {
   car: Car;
 }
 
 export default function ResultCard({ car }: ResultCardProps) {
+  const t = useTranslations("CarCard");
   const { vendor, car: carInfo, pricing, badge, badge_image } = car;
   const { currency } = useAppStore();
 
@@ -140,16 +142,16 @@ export default function ResultCard({ car }: ResultCardProps) {
                         href="#"
                         className="text-muted small text-decoration-none d-flex align-items-center gap-1"
                       >
-                        Ver Detalles <Info size={14} />
+                        {t("view_details")} <Info size={14} />
                       </a>
                       {recommendedOption.is_recommended && (
                         <span className="badge bg-white text-primary border border-primary px-2 py-1 rounded-pill">
-                          Recomendado
+                          {t("recommended")}
                         </span>
                       )}
                       {recommendedOption.is_offer && (
                         <span className="badge bg-white text-purple border border-purple px-2 py-1 rounded-pill">
-                          ¡Oferta de Hoy!
+                          {t("offer")}
                         </span>
                       )}
                     </div>
@@ -162,7 +164,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                         <div className="mb-1">
                           {recommendedOption.original_price_per_day && (
                             <span className="text-muted text-decoration-line-through small me-2">
-                              Antes{" "}
+                              {t("before")}{" "}
                               {formatCurrency(
                                 recommendedOption.original_price_per_day,
                               )}
@@ -224,7 +226,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                         href="#"
                         className="text-muted small text-decoration-none d-flex align-items-center gap-1"
                       >
-                        Ver Detalles <Info size={14} />
+                        {t("view_details")} <Info size={14} />
                       </a>
                     </div>
                   </div>
@@ -234,7 +236,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                       {basicOption.original_price_per_day && (
                         <div className="mb-1">
                           <span className="text-muted text-decoration-line-through small">
-                            Antes{" "}
+                            {t("before")}{" "}
                             {formatCurrency(basicOption.original_price_per_day)}
                           </span>
                         </div>
@@ -244,15 +246,19 @@ export default function ResultCard({ car }: ResultCardProps) {
                         <span className="h3 fw-bold mb-0 text-dark">
                           {formatCurrency(basicOption.price_per_day)}
                         </span>
-                        <span className="text-muted small ms-1">| dia</span>
+                        <span className="text-muted small ms-1">
+                          {t("day")}
+                        </span>
                       </div>
 
                       <div className="text-muted small mb-2">
-                        Total {formatCurrency(basicOption.total_price)}
+                        {t("total")} {formatCurrency(basicOption.total_price)}
                       </div>
 
                       <button className="btn btn-outline-primary fw-bold px-4 w-100">
-                        {basicOption.button_text}
+                        {basicOption.button_text === "Reservar"
+                          ? t("reserve")
+                          : t("default")}
                       </button>
                     </div>
                   </div>

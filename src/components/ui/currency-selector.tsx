@@ -1,11 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import Dropdown from "./dropdown";
-import { CircleDollarSign } from "lucide-react";
+import { CircleDollarSign, CheckCircle2 } from "lucide-react";
 import { useAppStore, type Currency } from "@/store/store";
 
 export default function CurrencySelector() {
+  const t = useTranslations("Header.currencies");
   const { currency, setCurrency } = useAppStore();
   const [currencies, setCurrencies] = useState<Currency[]>([]);
 
@@ -23,19 +25,47 @@ export default function CurrencySelector() {
         </>
       }
     >
-      <div className="p-3" style={{ maxHeight: "300px", overflowY: "auto" }}>
-        <h6 className="dropdown-header px-0 mb-2 text-dark fw-bold">Selecciona tu Moneda</h6>
-        {currencies.map((curr) => (
-          <div
-            key={curr.code}
-            className={`dropdown__item rounded ${currency.code === curr.code ? "bg-light text-primary fw-bold" : ""}`}
-            onClick={() => setCurrency(curr)}
-            style={{ cursor: "pointer" }}
-          >
-            <span className="fw-bold" style={{ width: "30px", display: "inline-block" }}>{curr.symbol}</span>
-            <span>{curr.code} - {curr.name}</span>
-          </div>
-        ))}
+      <div className="p-3 dropdown-menu-custom dropdown-menu-custom--currency">
+        <h6 className="fw-bold mb-3 text-dark">{t("title")}</h6>
+        <div className="d-flex flex-column gap-2">
+          {currencies.map((curr) => {
+            const isSelected = currency.code === curr.code;
+            return (
+              <div
+                key={curr.code}
+                className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
+                  isSelected
+                    ? "border-primary text-primary selected"
+                    : "border-transparent text-dark"
+                }`}
+                onClick={() => setCurrency(curr)}
+              >
+                <div className="d-flex align-items-center gap-2">
+                  <span
+                    className="fw-bold d-flex align-items-center justify-content-center bg-light rounded-circle"
+                    style={{ width: "30px", height: "30px", fontSize: "14px" }}
+                  >
+                    {curr.symbol}
+                  </span>
+                  <div
+                    className="d-flex flex-column"
+                    style={{ lineHeight: "1.2" }}
+                  >
+                    <span className="fw-bold" style={{ fontSize: "14px" }}>
+                      {curr.code}
+                    </span>
+                    <span className="text-muted" style={{ fontSize: "11px" }}>
+                      {curr.name}
+                    </span>
+                  </div>
+                </div>
+                {isSelected && (
+                  <CheckCircle2 size={18} />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Dropdown>
   );

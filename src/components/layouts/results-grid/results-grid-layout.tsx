@@ -3,8 +3,10 @@
 import EconomyCarCard from "../../results/economy-car-card";
 import ResultCard from "../../results/result-card";
 import { useCars } from "@/hooks/use-cars";
+import { useTranslations } from "next-intl";
 
 export default function ResultsGridLayout() {
+  const t = useTranslations("Results");
   const { data: cars, isLoading, error } = useCars();
 
   if (isLoading) {
@@ -12,7 +14,7 @@ export default function ResultsGridLayout() {
       <div className="container py-4">
         <div className="text-center py-5">
           <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Cargando...</span>
+            <span className="visually-hidden">{t("loading")}</span>
           </div>
         </div>
       </div>
@@ -22,7 +24,7 @@ export default function ResultsGridLayout() {
   if (error) {
     return (
       <div className="container py-4">
-        <div className="alert alert-danger">Error al cargar resultados</div>
+        <div className="alert alert-danger">{t("error")}</div>
       </div>
     );
   }
