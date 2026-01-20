@@ -2,6 +2,8 @@
 @use '../01-settings/typography' as *;
 @use '../01-settings/spacing' as *;
 @use '../02-tools/mixins' as *;
+@use '../02-tools/breakpoints' as *;
+@use '../02-tools/animations' as *;
 
 // Brand Colors (Local override if not in settings)
 $brand-black: #000000;
@@ -11,12 +13,12 @@ $brand-gray-light: #F9FAFB;
 
 .card {
   background-color: var(--bg-surface);
-  border-radius: 22px;
-  border: 1px solid rgba(var(--border-color), 0.6); // Softer border
+  border-radius: 1.375rem;
+  border: 1px solid rgba(var(--border-color), 0.6);
   color: var(--text-color);
   padding: $spacing-4;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); // Softer shadow
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 
   &:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -28,7 +30,7 @@ $brand-gray-light: #F9FAFB;
     box-shadow: none;
     background: transparent;
     
-    @media (min-width: 992px) {
+    @include media-breakpoint-up(lg) {
       background: var(--bg-surface);
     }
   }
@@ -36,7 +38,8 @@ $brand-gray-light: #F9FAFB;
   &--result {
     padding: $spacing-0;
     overflow: hidden;
-    margin-bottom: $spacing-6; // Increased spacing
+    margin-bottom: $spacing-6;
+    @include animate-fade-in-up($duration: 0.5s);
 
     .card__body {
       padding: $spacing-0;
@@ -46,7 +49,7 @@ $brand-gray-light: #F9FAFB;
       display: flex;
       flex-direction: column;
 
-      @media (min-width: 992px) {
+      @include media-breakpoint-up(lg) {
         flex-direction: row;
       }
     }
@@ -60,8 +63,8 @@ $brand-gray-light: #F9FAFB;
         width: 100%;
         border-bottom: 1px solid var(--border-color);
 
-        @media (min-width: 992px) {
-          width: 41.666667%; // col-lg-5
+        @include media-breakpoint-up(lg) {
+          width: 41.666667%;
           border-bottom: 0;
           border-right: 1px solid var(--border-color);
         }
@@ -71,8 +74,8 @@ $brand-gray-light: #F9FAFB;
         width: 100%;
         padding: $spacing-0;
 
-        @media (min-width: 992px) {
-          width: 58.333333%; // col-lg-7
+        @include media-breakpoint-up(lg) {
+          width: 58.333333%;
         }
       }
     }
@@ -87,7 +90,7 @@ $brand-gray-light: #F9FAFB;
     .card__vendor-logo {
       height: $spacing-6;
       position: relative;
-      width: 60px;
+      width: 3.75rem; // 60px
     }
 
     .vr {
@@ -117,17 +120,17 @@ $brand-gray-light: #F9FAFB;
     }
 
     .card__location {
-      display: flex;
-      align-items: center;
-      gap: $spacing-1;
-      color: var(--text-muted);
-      font-size: $font-size-xs;
-
-      .icon-primary {
-        color: $brand-cyan; // Cyan icon
-      }
-      
-      .text {
+        display: flex;
+        align-items: center;
+        gap: $spacing-1;
+        color: var(--text-muted);
+        font-size: $font-size-xs;
+  
+        .icon-primary {
+          color: $brand-cyan;
+        }
+        
+        .text {
         font-size: $font-size-xs;
       }
     }
@@ -135,8 +138,8 @@ $brand-gray-light: #F9FAFB;
     // Mobile First: Side-by-side layout for Image + Info
     .card__vehicle-details {
       display: flex;
-      align-items: flex-start; // Align top to match design
-      flex-wrap: nowrap; // Ensure side-by-side on mobile
+      align-items: flex-start;
+      flex-wrap: nowrap;
       gap: $spacing-4;
     }
 
@@ -147,58 +150,57 @@ $brand-gray-light: #F9FAFB;
       .image-wrapper {
         position: relative;
         width: 100%;
-        height: 100px; // Fixed height for consistency
+        height: 6.25rem;
       }
     }
 
     .card__vehicle-info {
-      padding-left: $spacing-0;
-      width: 60%;
-
-      .category {
-        color: $brand-black; // Black as per design
-        font-weight: $font-weight-extrabold;
-        margin-bottom: 0.125rem;
-        font-size: $font-size-lg;
-        line-height: 1.2;
-      }
-
-      .name {
-        color: $brand-navy; // Dark Blue/Purple tone from design
-        font-size: 0.8rem;
-        font-weight: $font-weight-bold;
-        line-height: 1.2;
-        margin-bottom: $spacing-2;
-
-        .similar {
-          color: $brand-cyan; // Cyan for "o Similar"
-          font-weight: $font-weight-normal;
-          font-size: $font-size-sm;
-          margin-left: $spacing-1;
+        padding-left: $spacing-0;
+        width: 60%;
+  
+        .category {
+          color: $brand-black;
+          font-weight: $font-weight-extrabold;
+          margin-bottom: 0.125rem;
+          font-size: $font-size-lg;
+          line-height: 1.2;
+        }
+  
+        .name {
+          color: $brand-navy;
+          font-size: 0.8rem;
+          font-weight: $font-weight-bold;
+          line-height: 1.2;
+          margin-bottom: $spacing-2;
+  
+          .similar {
+            color: $brand-cyan;
+            font-weight: $font-weight-normal;
+            font-size: $font-size-sm;
+            margin-left: $spacing-1;
+          }
         }
       }
-    }
 
     .card__features {
-      display: flex;
-      align-items: center;
-      gap: $spacing-4;
-      margin-top: $spacing-2;
-      
-      .feature-item {
         display: flex;
         align-items: center;
-        gap: 0.35rem;
-        color: var(--text-muted);
-        font-size: $font-size-sm;
-        font-weight: $font-weight-medium;
+        gap: $spacing-4;
+        margin-top: $spacing-2;
         
-        // Ensure icons are grayscale/muted if they are svg
-        img {
-          opacity: 0.7;
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          color: var(--text-muted);
+          font-size: $font-size-sm;
+          font-weight: $font-weight-medium;
+          
+          img {
+            opacity: 0.7;
+          }
         }
       }
-    }
 
     .card__insurance-badge {
       height: 60px;
@@ -208,7 +210,7 @@ $brand-gray-light: #F9FAFB;
       width: 60px;
       z-index: 10;
 
-      @media (min-width: 992px) {
+      @include media-breakpoint-up(lg) {
         height: 70px;
         width: 70px;
         right: $spacing-4;
@@ -252,10 +254,10 @@ $brand-gray-light: #F9FAFB;
 
       .option-content {
         display: flex;
-        flex-direction: column; // Stack vertically on mobile
+        flex-direction: column;
         height: 100%;
         
-        @media (min-width: 768px) {
+        @include media-breakpoint-up(md) {
           flex-direction: row;
           align-items: center;
         }
@@ -265,13 +267,13 @@ $brand-gray-light: #F9FAFB;
         margin-bottom: $spacing-4;
         width: 100%;
         
-        @media (min-width: 768px) {
-          width: 58.333333%; // col-md-7
+        @include media-breakpoint-up(md) {
+          width: 58.333333%;
           margin-bottom: 0;
         }
 
         .title {
-          color: #0583FF; // Dark text for "Sin Seguros"
+          color: #0583FF;
           font-size: 0.8rem;
           font-weight: $font-weight-bold;
           margin-bottom: $spacing-1;
@@ -286,7 +288,7 @@ $brand-gray-light: #F9FAFB;
 
       // Override for basic option title color
       &--basic .option-details .title {
-        color: $brand-black; // Dark text for "Sin Seguros"
+        color: $brand-black;
       }
 
       .inclusions {
@@ -297,13 +299,13 @@ $brand-gray-light: #F9FAFB;
         margin-bottom: $spacing-3;
         margin-top: $spacing-2;
 
-        @media (min-width: 768px) {
+        @include media-breakpoint-up(md) {
           flex-direction: row;
         }
 
         .inclusion-item {
           align-items: center;
-          color: $color-green; // Green text
+          color: $color-green;
           display: flex;
           font-size: 0.65rem;
           font-weight: $font-weight-normal;
@@ -338,10 +340,10 @@ $brand-gray-light: #F9FAFB;
 
         .badge-recommended {
           background-color: transparent;
-          color: $color-primary; // Use primary blue for outline
+          color: $color-primary;
           border: 1px solid $color-primary;
           padding: $spacing-1 $spacing-3;
-          border-radius: $spacing-2; // Rounded rect
+          border-radius: $spacing-2;
           font-size: $font-size-xs;
           font-weight: $font-weight-bold;
         }
@@ -363,7 +365,7 @@ $brand-gray-light: #F9FAFB;
         flex-direction: row; 
         justify-content: flex-end;
 
-        @media (min-width: 768px) {
+        @include media-breakpoint-up(md) {
           width: 41.666667%; // col-md-5
         }
       }
@@ -374,7 +376,7 @@ $brand-gray-light: #F9FAFB;
         align-items: flex-end; // Right align everything
         width: 100%;
 
-        @media (min-width: 992px) {
+        @include media-breakpoint-up(lg) {
           flex-direction: row;
           align-items: center;
           justify-content: flex-end;
@@ -401,7 +403,7 @@ $brand-gray-light: #F9FAFB;
         }
 
         .discount-badge {
-          background-color: var(--color-error); // Red
+          background-color: var(--color-error);
           color: white;
           border-radius: 50rem;
           font-size: $font-size-xs;
@@ -417,9 +419,9 @@ $brand-gray-light: #F9FAFB;
         margin-bottom: 0.125rem;
 
         .amount {
-          font-size: $font-size-base; // Large price
+          font-size: $font-size-base;
           font-weight: $font-weight-extrabold;
-          color: $color-gray-900; // Dark black
+          color: $color-gray-900;
           line-height: 1;
         }
 
@@ -468,7 +470,7 @@ $brand-gray-light: #F9FAFB;
           }
         }
         
-        @media (min-width: 768px) {
+        @include media-breakpoint-up(md) {
             width: auto;
         }
       }

@@ -1,5 +1,6 @@
 @use '../01-settings/colors' as *;
 @use '../02-tools/mixins' as *;
+@use '../02-tools/breakpoints' as *;
 
 .border { border: 1px solid var(--border-color); }
 .dark\:border {
@@ -18,7 +19,7 @@
 @include generate-utility('border-color', $utilities-colors, 'border-', false);
 
 // Responsive
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   .border-end-lg {
     border-right: 1px solid var(--border-color);
   }

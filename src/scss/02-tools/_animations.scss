@@ -1,0 +1,20 @@
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin animate-fade-in-up($duration: 0.5s, $delay: 0s, $fill-mode: forwards) {
+  animation: fade-in-up $duration ease-out $delay $fill-mode;
+  opacity: 0; // Ensures element is hidden before animation starts
+  
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+  }
+}
