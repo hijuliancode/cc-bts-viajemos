@@ -30,13 +30,13 @@ export default function Header() {
           <div className="d-flex align-items-center gap-2 cursor-pointer">
             <SquareUserIcon size={20} />
             <Link
-              className="text-primary text-decoration-none text-body cursor-pointer"
+              className="text-primary text-decoration-none text-body cursor-pointer d-none d-lg-block"
               href="#"
             >
               {t("login")}
             </Link>
           </div>
-          <div className="d-flex align-items-center gap-2 cursor-pointer">
+          <div className="d-none d-lg-flex align-items-center gap-2 cursor-pointer">
             <MessageCircleQuestionMarkIcon size={20} />
             <Link
               className="text-primary text-decoration-none text-body cursor-pointer"

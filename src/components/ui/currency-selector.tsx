@@ -20,9 +20,10 @@ export default function CurrencySelector() {
   return (
     <Dropdown
       label={
-        <>
-          <CircleDollarSign size={18} /> {currency.code}
-        </>
+        <div className="d-flex align-items-center gap-1">
+          <CircleDollarSign size={18} />{" "}
+          <span className="d-none d-lg-block">{currency.code}</span>
+        </div>
       }
     >
       <div className="p-3 dropdown-menu-custom dropdown-menu-custom--currency">

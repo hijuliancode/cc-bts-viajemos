@@ -38,10 +38,10 @@ export default function LanguageSelector() {
   return (
     <Dropdown
       label={
-        <>
+        <div className="d-flex align-items-center gap-1">
           <span style={{ fontSize: "1.2rem" }}>{currentLang.flag}</span>{" "}
-          {currentLang.label}
-        </>
+          <span className="d-none d-lg-block">{currentLang.label}</span>
+        </div>
       }
     >
       <div className="p-4 dropdown-menu-custom">
