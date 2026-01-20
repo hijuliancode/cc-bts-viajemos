@@ -6,12 +6,50 @@
   padding: $spacing-2 $spacing-4;
   background-color: $color-primary;
   color: $color-white;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  &-primary {
+    background-color: $color-primary;
+    color: $color-white;
+    &:hover {
+      background-color: darken($color-primary, 5%);
+    }
+  }
+
+  &-info {
+    background-color: $color-cyan;
+    color: $color-white;
+    border-color: $color-cyan;
+    &:hover {
+      background-color: darken($color-cyan, 5%);
+    }
+  }
+
+  &-outline-primary {
+    background-color: transparent;
+    color: $color-primary;
+    border-color: $color-primary;
+    
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &.w-100 {
+    width: 100%;
   }
 }

@@ -7,51 +7,32 @@
 
   // Economy/Sidebar Card
   &--sidebar {
-    text-align: center;
+    border: none;
+    box-shadow: none; // Or lighter shadow if desired, design looks flat/clean
+    background: transparent; // Or white if it's a card
     
-    .card__image {
-      max-width: 100%;
-      height: auto;
-      margin: 1rem 0;
+    @media (min-width: 992px) {
+        background: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     }
-
+    
     .card__features {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-      
-      li {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-        color: #666;
-        font-size: 0.9rem;
-      }
+       // Utility classes handle most of it now
     }
   }
 
   // Result/Horizontal Card
   &--result {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-
-    @media (min-width: 768px) {
-      flex-wrap: nowrap;
-    }
+    padding: 0; // Reset padding as we use card-body
     
-    .card__main {
-      flex: 1;
+    .card-body {
+      padding: 1.5rem;
     }
 
-    .card__pricing {
-      flex: 0 0 300px;
-      border-left: 1px solid #eee;
-      padding-left: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    // Ensure images inside responsive containers behave
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 }

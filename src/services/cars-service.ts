@@ -21,6 +21,7 @@ export interface Car {
   };
   tags: string[];
   badge: string;
+  badge_image?: string;
   pricing: {
     currency: string;
     options: {

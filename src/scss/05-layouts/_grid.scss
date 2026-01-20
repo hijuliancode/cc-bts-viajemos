@@ -15,3 +15,62 @@
     }
   }
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -#{$spacing-4};
+  margin-left: -#{$spacing-4};
+  
+  > * {
+    padding-right: $spacing-4;
+    padding-left: $spacing-4;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.g-4 {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+  
+  > * {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+  }
+}
+
+// Basic grid columns
+@include media-breakpoint-up(md, $grid-breakpoints) {
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
+  .col-md-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+  }
+}
+
+@include media-breakpoint-up(lg, $grid-breakpoints) {
+  .col-lg-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .col-lg-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
+  .col-lg-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+  }
+  .col-lg-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+}

@@ -7,7 +7,9 @@ export default function Banner() {
         </div>
         <div className="banner__price-info">
           <small className="text-primary">+ Grandes Desde</small>
-          <strong>$544.448 <span className="fw-normal text-muted fs-6">| día</span></strong>
+          <strong>
+            $544.448 <span className="fw-normal text-muted fs-6">| día</span>
+          </strong>
         </div>
       </div>
     </div>

@@ -5,19 +5,40 @@ import { Users, Briefcase, Snowflake, Settings } from "lucide-react";
 export default function EconomyCarCard() {
   return (
     <div className="card card--sidebar">
-      <h3 className="h5 fw-bold text-start">Economico</h3>
-      
-      {/* Placeholder image - replace with actual image asset */}
-      <div className="card__image bg-light rounded d-flex align-items-center justify-content-center" style={{ height: '120px' }}>
-        <span className="text-muted">Car Image</span>
+      <h3 className="h4 fw-bold text-start mb-4 text-dark">Economico</h3>
+
+      <div
+        className="card__image position-relative d-flex align-items-center justify-content-center mb-4"
+        style={{ height: "140px" }}
+      >
+        <Image
+          src="/content/cars/hyundai-santa-fe/hyundai-santa-fe.png"
+          alt="Economico Car"
+          fill
+          style={{ objectFit: "contain" }}
+          priority
+        />
       </div>
 
-      <ul className="card__features mt-3">
-        <li><Users size={16} /> 5 Pasajeros</li>
-        <li><Briefcase size={16} /> 3 Maletas</li>
-        <li><Snowflake size={16} /> Aire Acondicionado</li>
-        <li><Settings size={16} /> Caja Automatica</li>
-      </ul>
+      <div className="card__features">
+        <div className="d-flex align-items-center gap-2 mb-3 text-muted">
+          <Users size={20} /> <span className="fw-medium">5 Pasajeros</span>
+        </div>
+        <div className="d-flex align-items-center gap-2 mb-3 text-muted">
+          <Briefcase size={20} /> <span className="fw-medium">3 Maletas</span>{" "}
+          <span className="text-muted ms-auto" style={{ cursor: "pointer" }}>
+            ⓘ
+          </span>
+        </div>
+        <div className="d-flex align-items-center gap-2 mb-3 text-muted">
+          <Snowflake size={20} />{" "}
+          <span className="fw-medium">Aire Acondicionado</span>
+        </div>
+        <div className="d-flex align-items-center gap-2 mb-3 text-muted">
+          <Settings size={20} />{" "}
+          <span className="fw-medium">Caja Automatica</span>
+        </div>
+      </div>
     </div>
   );
 }

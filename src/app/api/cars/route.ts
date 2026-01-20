@@ -6,7 +6,7 @@ export async function GET() {
       id: "car-1",
       vendor: {
         name: "Hertz",
-        logo: "/design/vendors/hertz.svg",
+        logo: "/design/logos/logo-hertz.png",
         rating: 4.8
       },
       location: {
@@ -20,7 +20,7 @@ export async function GET() {
           passengers: 5,
           bags: 3,
           has_ac: true,
-          transmission: "Automático"
+          transmission: "automatic"
         }
       },
       tags: ["Recomendado"],
@@ -58,25 +58,26 @@ export async function GET() {
       id: "car-2",
       vendor: {
         name: "Avis",
-        logo: "/design/vendors/avis.svg",
+        logo: "/design/logos/logo-avis.svg",
         rating: 4.8
       },
       location: {
         pickup_location: "En Aeropuerto"
       },
       car: {
-        name: "Kia Soul o Similar",
+        name: "Hyundai Santa Fe o Similar",
         category: "Intermedio",
-        image_url: "/content/cars/kia-soul/kia-soul.png",
+        image_url: "/content/cars/hyundai-santa-fe/hyundai-santa-fe.png",
         features: {
           passengers: 5,
           bags: 3,
           has_ac: true,
-          transmission: "Automático"
+          transmission: "automatic"
         }
       },
       tags: ["¡Oferta de Hoy!"],
       badge: "Seguro de Viajes Incluido Gratis",
+      badge_image: "/design/misc/travel-insurance-free.png",
       pricing: {
         currency: "COP",
         options: [
