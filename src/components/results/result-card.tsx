@@ -1,4 +1,11 @@
-import { Star, ShieldCheck, Ban, Info } from "lucide-react";
+import {
+  Star,
+  ShieldCheck,
+  Ban,
+  Info,
+  PlaneIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 import Image from "next/image";
 import CarFeatures from "./car-features";
 import { type Car } from "@/services/cars-service";
@@ -26,31 +33,44 @@ export default function ResultCard({ car }: ResultCardProps) {
     pricing.options.find((opt) => opt.type === "basic") || pricing.options[1];
 
   return (
-    <div className="card card--result mb-3 shadow-sm">
-      <div className="card-body p-4">
+    <div className="card card--result mb-3">
+      <div className="card-body">
         <div className="row gap-4">
           {/* Left Column: Car Info & Features */}
-          <div className="col-lg-5 border-end-lg p-4">
-            <div className="d-flex align-items-center gap-3 mb-3">
-              <div style={{ width: 80, height: 30, position: "relative" }}>
-                <Image
-                  src={vendor.logo}
-                  alt={vendor.name}
-                  fill
-                  style={{
-                    objectFit: "contain",
-                    objectPosition: "left center",
-                  }}
-                  className="bg-surface rounded"
-                />
+          <div className="col-lg-5 border-end-lg p-4 relative w-100 w-lg-auto">
+            <div className="card-header">
+              <div className="d-flex gap-2">
+                <div
+                  className="relative mr-2"
+                  style={{ width: 80, height: 30 }}
+                >
+                  <Image
+                    src={vendor.logo}
+                    alt={vendor.name}
+                    fill
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "left center",
+                    }}
+                    className="bg-surface rounded"
+                  />
+                </div>
+
+                <div className="divider-vertical relative top-2"></div>
+
+                <div className="card-header__rating">
+                  <Star
+                    size={14}
+                    fill="currentColor"
+                    className="text-green mr-1"
+                  />
+                  <span className="fw-medium me-1 text-gray-300">
+                    {vendor.rating}
+                  </span>
+                </div>
               </div>
 
-              <div className="d-flex align-items-center bg-success text-white px-2 py-0.5 rounded small">
-                <span className="fw-bold me-1">{vendor.rating}</span>
-                <Star size={12} fill="currentColor" />
-              </div>
-
-              <div className="d-flex align-items-center text-muted small">
+              <div className="card-header__location">
                 <Image
                   src={vendor.logo}
                   alt=""
@@ -58,63 +78,70 @@ export default function ResultCard({ car }: ResultCardProps) {
                   height={14}
                   className="me-1 d-none"
                 />
-                <span className="text-primary">✈</span>
+                <span className="text-primary mr-2">
+                  <PlaneIcon size={14} />
+                </span>
                 <span className="ms-1">{car.location.pickup_location}</span>
+                <ChevronRightIcon size={14} />
               </div>
             </div>
 
-            <div className="position-relative mb-3">
-              <div
-                className="d-flex align-items-center justify-content-center mb-3"
-                style={{ height: "160px", position: "relative" }}
-              >
-                <Image
-                  src={carInfo.image_url}
-                  alt={carInfo.name}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  priority
+            <div className="car-data">
+              <div className="car-data__photo relative">
+                <div
+                  className="d-flex align-items-center justify-content-center mb-3"
+                  style={{ height: "80px", position: "relative" }}
+                >
+                  <Image
+                    src={carInfo.image_url}
+                    alt={carInfo.name}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    priority
+                  />
+                </div>
+              </div>
+
+              <div className="car__name-features">
+                <p className="car-data__category">{carInfo.category}</p>
+                <h3 className="car-data__name gap-2 fw-bold mb-1">
+                  {carInfo.name}
+                  <span className="text-primary fw-normal">o Similar</span>
+                </h3>
+
+                <CarFeatures
+                  passengers={carInfo.features.passengers}
+                  bags={carInfo.features.bags}
+                  has_ac={carInfo.features.has_ac}
+                  transmission={carInfo.features.transmission}
                 />
               </div>
-
-              {/* Travel Insurance Badge */}
-              {(badge_image || badge) && (
-                <div
-                  className="position-absolute"
-                  style={{ top: 0, right: 0, width: 60, height: 60 }}
-                >
-                  {badge_image ? (
-                    <Image
-                      src={badge_image}
-                      alt={badge}
-                      fill
-                      style={{ objectFit: "contain" }}
-                    />
-                  ) : (
-                    <div className="badge bg-gray-100 dark:bg-gray-800 text-success border border-success rounded-circle p-2">
-                      <ShieldCheck size={24} />
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
 
-            <h3 className="h4 fw-bold mb-1">
-              {carInfo.name}{" "}
-              <span className="text-primary fs-6 fw-normal">o Similar</span>
-            </h3>
-            {/* <p className="text-muted mb-3 small">{carInfo.category}</p> */}
-
-            <CarFeatures
-              passengers={carInfo.features.passengers}
-              bags={carInfo.features.bags}
-              has_ac={carInfo.features.has_ac}
-              transmission={carInfo.features.transmission}
-            />
+            {/* Travel Insurance Badge */}
+            {(badge_image || badge) && (
+              <div
+                className="absolute top-4 right-4"
+                style={{ width: 60, height: 60 }}
+              >
+                {badge_image ? (
+                  <Image
+                    src={badge_image}
+                    alt={badge}
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                ) : (
+                  <div className="badge bg-gray-100 dark:bg-gray-800 text-success border border-success rounded-circle p-2">
+                    <ShieldCheck size={24} />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Right Column: Pricing Options */}
-          <div className="col-lg-7 d-flex flex-column justify-content-between">
+          <div className="d-flex flex-column justify-content-between">
             {/* Recommended Option */}
             {recommendedOption && (
               <div className="border-bottom pb-4 mb-4">

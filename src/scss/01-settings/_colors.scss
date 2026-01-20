@@ -4,6 +4,7 @@ $color-secondary: #ff0080 !default;
 $color-accent: #7928ca !default;
 $color-cyan: #00C3E3 !default;
 $color-purple: #6f42c1 !default;
+$color-green: #37CC00 !default;
 
 // Neutral Colors
 $color-black: #000000 !default;
@@ -43,5 +44,6 @@ $utilities-colors: (
   "success": $color-success,
   "warning": $color-warning,
   "error": $color-error,
-  "info": $color-info
+  "info": $color-info,
+  "green": $color-green,
 );

@@ -17,7 +17,7 @@ export default function CarFeatures({
   const t = useTranslations("Features");
 
   return (
-    <div className="d-flex gap-4 text-muted mt-2">
+    <div className="car-features d-flex gap-4 text-muted mt-2">
       <div className="d-flex align-items-center gap-2" title={t("passengers")}>
         <Image
           src="/design/icons/people.svg"

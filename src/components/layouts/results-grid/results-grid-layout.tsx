@@ -30,7 +30,7 @@ export default function ResultsGridLayout() {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container">
       <div className="d-flex flex-column flex-lg-row gap-4">
         <aside className="w-100 w-lg-25 flex-shrink-0">
           <EconomyCarCard />

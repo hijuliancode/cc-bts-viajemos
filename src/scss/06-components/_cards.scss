@@ -2,11 +2,10 @@
 
 .card {
   background-color: var(--bg-surface);
-  border-radius: 0.75rem;
+  border-radius: 22px;
   border: 1px solid var(--border-color);
   color: var(--text-color);
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
+  padding: 16px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 
   &--sidebar {
@@ -21,9 +20,56 @@
 
   &--result {
     padding: 0;
+
+    .card-header {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 12px;
+
+      &__rating {
+        @include flex-center;
+        border-radius: 12px;
+        color: var(--text-white);
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+      }
+
+      &__location {
+        align-items: center;
+        color: var(--text-muted);
+        display: flex;
+        font-size: 0.875rem;
+      }
+    }
     
+    .car-data {
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+
+      .car-data__photo {
+        // grid-area: car-photo;
+        width: 40%;
+      }
+      
+      .car-data__name {
+        display: flex;
+        margin: 0;
+        font-size: 14px;;
+      }
+
+      .car-data__category {
+        font-weight: 600;
+        margin: 0 0 4px;
+      }
+
+      .car-features {
+        // grid-area: car-features;
+      }
+    }
+
     .card-body {
-      padding: 1.5rem;
+      padding: 16px;
     }
 
     img {
