@@ -13,7 +13,7 @@
   "Banner": {
     "prefix": "Grandes",
     "results": "({count}) Resultados",
-    "from": "+ Grandes Desde",
+    "from": "Desde",
     "day": "| día"
   },
   "Results": {

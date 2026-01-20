@@ -9,7 +9,9 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Use setTimeout to avoid "synchronous setState in effect" warning
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) {
@@ -19,14 +21,14 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="btn btn-link p-0 text-body d-flex align-items-center justify-content-center"
+      className="text-body d-flex align-items-center justify-content-center border p-1 w-8 h-8 cursor-pointer"
       aria-label="Toggle theme"
-      style={{ width: 40, height: 40, borderRadius: '50%' }}
+      style={{ borderRadius: "50%" }}
     >
       {theme === "dark" ? (
-        <Sun size={20} className="text-warning" />
+        <Sun size={16} className="text-warning" />
       ) : (
-        <Moon size={20} className="text-body" />
+        <Moon size={16} className="text-body" />
       )}
     </button>
   );

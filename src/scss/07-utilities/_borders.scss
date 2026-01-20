@@ -8,6 +8,7 @@
   }
 }
 .border-0 { border: 0; }
+.border-2 { border: 2px solid var(--border-color); }
 .border-top { border-top: 1px solid var(--border-color); }
 .border-bottom { border-bottom: 1px solid var(--border-color); }
 .border-start { border-left: 1px solid var(--border-color); }
@@ -24,5 +25,6 @@
 }
 
 .rounded { border-radius: 0.25rem; }
+.rounded-xl { border-radius: 0.5rem; }
 .rounded-circle { border-radius: 50%; }
 .rounded-pill { border-radius: 50rem; }

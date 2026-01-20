@@ -1,0 +1,9 @@
+@use '../01-settings' as *;
+
+.dot {
+  background-color: $color-primary;
+  border-radius: 50%;
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+}

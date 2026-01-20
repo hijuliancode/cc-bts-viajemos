@@ -16,15 +16,18 @@ export default function Banner() {
       <div className="container banner__inner">
         <div className="banner__title">
           {t("prefix")}{" "}
-          <span className="text-muted fw-normal">
+          <span className="text-muted fw-normal text-xs text-italic ml-2">
             {t("results", { count: 45 })}
           </span>
         </div>
         <div className="banner__price-info">
-          <small className="text-primary">{t("from")}</small>
-          <strong>
+          <small className="d-flex gap-1 text-xs mb-1 justify-content-end">
+            <span className="text-primary">+Grandes</span>
+            <span className="text-gray-500">{t("from")}</span>
+          </small>
+          <strong className="d-flex align-items-center text-right justify-content-end">
             {displayPrice}{" "}
-            <span className="fw-normal text-muted fs-6">{t("day")}</span>
+            <small className="fw-normal text-muted fs-6">{t("day")}</small>
           </strong>
         </div>
       </div>

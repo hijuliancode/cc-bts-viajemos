@@ -1,31 +1,31 @@
 @use '../01-settings' as *;
 
 .dropdown {
-  position: relative;
+  align-items: center;
+  color: var(--text-color);
   cursor: pointer;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-weight: 600;
-  color: var(--text-color);
+  gap: 0.5rem;
+  position: relative;
   
   &__menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--dropdown-bg);
+    background: var(--bg-header);
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     min-width: 200px;
-    z-index: 100;
     padding: 0.5rem 0;
+    position: absolute;
+    right: 0;
+    top: 150%;
+    z-index: 100;
   }
   
   &__item {
-    padding: 0.5rem 1rem;
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
     
     &:hover {
       background-color: var(--dropdown-hover);
@@ -34,20 +34,23 @@
 
   // Styles for detailed content (Language/Currency selectors) - Extracted from inline styles
   &-menu-custom {
-    min-width: 320px;
     max-height: 80vh;
+    min-width: 320px;
     overflow-y: auto;
     
     &--currency {
-      min-width: 280px;
       max-height: 300px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; // Disable outer scroll
     }
   }
 
   &-item-custom {
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.2s ease;
-    background-color: transparent;
 
     &:hover {
       background-color: var(--dropdown-hover);

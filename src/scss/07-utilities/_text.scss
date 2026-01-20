@@ -1,10 +1,12 @@
 @use '../01-settings/colors' as *;
 @use '../02-tools/mixins' as *;
+@use '../01-settings/typography' as *;
 
 // Alignment
 .text-center { text-align: center; }
 .text-end { text-align: right; }
 .text-start { text-align: left; }
+.text-italic { font-style: italic; }
 
 @include generate-utility('color', $utilities-colors, 'text-', false);
 
@@ -13,16 +15,34 @@
 .text-muted { color: var(--text-muted); }
 
 // Weights
-.fw-bold { font-weight: 700; }
-.fw-semibold { font-weight: 600; }
-.fw-medium { font-weight: 500; }
 .fw-normal { font-weight: 400; }
+.fw-medium { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
 
 // Decoration
 .text-decoration-none { text-decoration: none; }
 .text-decoration-line-through { text-decoration: line-through; }
 
 // Sizes
+$font-sizes: (
+  "xs": $font-size-xs,
+  "sm": $font-size-sm,
+  "base": $font-size-base,
+  "lg": $font-size-lg,
+  "xl": $font-size-xl,
+  "2xl": $font-size-2xl,
+  "3xl": $font-size-3xl,
+  "4xl": $font-size-4xl,
+  "5xl": $font-size-5xl
+);
+
+@each $key, $value in $font-sizes {
+  .text-#{$key} {
+    font-size: $value !important;
+  }
+}
+
 .fs-6 { font-size: 1rem; }
 .small { font-size: 0.875rem; }
 .h1 { font-size: 2.5rem; }
@@ -31,3 +51,4 @@
 .h4 { font-size: 1.5rem; }
 .h5 { font-size: 1.25rem; }
 .h6 { font-size: 1rem; }
+

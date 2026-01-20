@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import Dropdown from "./dropdown";
-import { Globe, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAppStore } from "@/store/store";
 
@@ -33,20 +33,14 @@ export default function LanguageSelector() {
     { code: "en", label: "English", flag: "🇺🇸" },
   ];
 
-  const getLabel = (code: string) => {
-    if (code === "en") return "English";
-    if (code === "es") return "Español";
-    if (code === "pt") return "Português";
-    return code;
-  };
-
-  const currentLangLabel = getLabel(locale);
+  const currentLang = languages.find((l) => l.code === locale) || languages[0];
 
   return (
     <Dropdown
       label={
         <>
-          <Globe size={18} /> {currentLangLabel}
+          <span style={{ fontSize: "1.2rem" }}>{currentLang.flag}</span>{" "}
+          {currentLang.label}
         </>
       }
     >
@@ -59,7 +53,7 @@ export default function LanguageSelector() {
             return (
               <div
                 key={lang.code}
-                className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
+                className={`d-flex align-items-center justify-content-between p-2 rounded border-2 dropdown-item-custom relative ${
                   isSelected
                     ? "border-primary text-primary selected"
                     : "border-transparent text-body"
@@ -72,7 +66,11 @@ export default function LanguageSelector() {
                     {lang.label}
                   </span>
                 </div>
-                {isSelected && <CheckCircle2 size={18} />}
+                {isSelected && (
+                  <div className="absolute top-1 right-1 translate-middle">
+                    <CheckCircle2 size={18} />
+                  </div>
+                )}
               </div>
             );
           })}
@@ -87,7 +85,7 @@ export default function LanguageSelector() {
             return (
               <div
                 key={c.code}
-                className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
+                className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom relative ${
                   isSelected
                     ? "border-primary text-primary selected"
                     : "border-transparent text-body"
@@ -100,7 +98,11 @@ export default function LanguageSelector() {
                     {c.name}
                   </span>
                 </div>
-                {isSelected && <CheckCircle2 size={18} />}
+                {isSelected && (
+                  <div className="absolute top-1 right-1 translate-middle">
+                    <CheckCircle2 size={18} />
+                  </div>
+                )}
               </div>
             );
           })}

@@ -1,0 +1,24 @@
+@use '../01-settings/spacing' as *;
+
+// Position utilities
+.static { position: static; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+// Position helpers (top, right, bottom, left)
+$position-prefixes: (
+  "top": "top",
+  "right": "right",
+  "bottom": "bottom",
+  "left": "left"
+);
+
+@each $prefix, $property in $position-prefixes {
+  @each $size-key, $size-value in $spacers {
+    .#{$prefix}-#{$size-key} {
+      #{$property}: $size-value;
+    }
+  }
+}

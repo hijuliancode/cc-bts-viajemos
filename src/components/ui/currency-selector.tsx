@@ -26,14 +26,14 @@ export default function CurrencySelector() {
       }
     >
       <div className="p-3 dropdown-menu-custom dropdown-menu-custom--currency">
-        <h6 className="fw-bold mb-3 text-body">{t("title")}</h6>
-        <div className="d-flex flex-column gap-2">
+        <h5 className="fw-semibold mt-0 mb-3 text-body">{t("title")}</h5>
+        <div className="d-flex flex-column gap-2 overflow-y-auto">
           {currencies.map((curr) => {
             const isSelected = currency.code === curr.code;
             return (
               <div
                 key={curr.code}
-                className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
+                className={`d-flex align-items-center justify-content-between px-3 py-1 rounded dropdown-item-custom relative ${
                   isSelected
                     ? "border-primary text-primary selected"
                     : "border-transparent text-body"
@@ -42,25 +42,29 @@ export default function CurrencySelector() {
               >
                 <div className="d-flex align-items-center gap-2">
                   <span
-                    className="fw-bold d-flex align-items-center justify-content-center bg-gray-100 dark:bg-gray-800 rounded-circle"
-                    style={{ width: "30px", height: "30px", fontSize: "14px" }}
+                    className={`fw-bold d-flex align-items-center justify-content-center border-2 dark:bg-gray-800 rounded-xl text-xs ${
+                      isSelected
+                        ? "border-primary text-primary selected"
+                        : "border-gray-500 text-gray-500"
+                    }`}
+                    style={{ width: "18px", height: "18px" }}
                   >
                     {curr.symbol}
                   </span>
                   <div
-                    className="d-flex flex-column"
+                    className="d-flex flex-row"
                     style={{ lineHeight: "1.2" }}
                   >
-                    <span className="fw-bold" style={{ fontSize: "14px" }}>
-                      {curr.code}
-                    </span>
-                    <span className="text-muted" style={{ fontSize: "11px" }}>
-                      {curr.name}
+                    <span
+                      className="fw-normal text-gray-300"
+                      style={{ fontSize: "14px" }}
+                    >
+                      {curr.code} - {curr.name}
                     </span>
                   </div>
                 </div>
                 {isSelected && (
-                  <CheckCircle2 size={18} />
+                  <div className="dot right-2 absolute top-3"></div>
                 )}
               </div>
             );
