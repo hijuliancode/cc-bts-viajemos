@@ -51,7 +51,7 @@ export default function LanguageSelector() {
       }
     >
       <div className="p-4 dropdown-menu-custom">
-        <h6 className="fw-bold mb-3 text-dark">{t("title")}</h6>
+        <h6 className="fw-bold mb-3 text-body">{t("title")}</h6>
 
         <div className="d-flex flex-column gap-2 mb-4">
           {languages.map((lang) => {
@@ -62,7 +62,7 @@ export default function LanguageSelector() {
                 className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
                   isSelected
                     ? "border-primary text-primary selected"
-                    : "border-transparent text-dark"
+                    : "border-transparent text-body"
                 }`}
                 onClick={() => handleLanguageChange(lang.code)}
               >
@@ -80,7 +80,7 @@ export default function LanguageSelector() {
 
         <hr className="text-muted opacity-25 my-3" />
 
-        <h6 className="fw-bold mb-3 text-dark">{t("country_title")}</h6>
+        <h6 className="fw-bold mb-3 text-body">{t("country_title")}</h6>
         <div className="d-flex flex-column gap-2">
           {countries.map((c) => {
             const isSelected = country === c.code;
@@ -90,7 +90,7 @@ export default function LanguageSelector() {
                 className={`d-flex align-items-center justify-content-between p-2 rounded border dropdown-item-custom ${
                   isSelected
                     ? "border-primary text-primary selected"
-                    : "border-transparent text-dark"
+                    : "border-transparent text-body"
                 }`}
                 onClick={() => setCountry(c.code)}
               >

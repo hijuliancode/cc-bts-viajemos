@@ -1,12 +1,17 @@
 @use '../01-settings/colors' as *;
+@use '../02-tools/mixins' as *;
 
-.bg-light { background-color: $color-gray-100 !important; }
-.bg-white { background-color: $color-white !important; }
-.bg-success { background-color: $color-success !important; }
-.bg-danger { background-color: $color-error !important; }
-.bg-primary { background-color: $color-primary !important; }
+@include generate-utility('background-color', $utilities-colors, 'bg-', false);
 
-.shadow-sm { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+// Semantic Backgrounds
+.bg-body { background-color: var(--bg-body); }
+.bg-surface { background-color: var(--bg-surface); }
+.bg-surface-hover { background-color: var(--bg-dropdown-hover); }
+.bg-header { background-color: var(--bg-header); }
+.bg-input { background-color: var(--bg-input); }
+.bg-banner { background-color: var(--bg-banner); }
 
-.position-relative { position: relative !important; }
-.position-absolute { position: absolute !important; }
+// Helpers
+.shadow-sm { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }

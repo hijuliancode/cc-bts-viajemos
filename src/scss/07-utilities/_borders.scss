@@ -1,23 +1,28 @@
 @use '../01-settings/colors' as *;
+@use '../02-tools/mixins' as *;
 
-.border { border: 1px solid $color-gray-200 !important; }
-.border-0 { border: 0 !important; }
-.border-top { border-top: 1px solid $color-gray-200 !important; }
-.border-bottom { border-bottom: 1px solid $color-gray-200 !important; }
-.border-start { border-left: 1px solid $color-gray-200 !important; }
-.border-end { border-right: 1px solid $color-gray-200 !important; }
+.border { border: 1px solid var(--border-color); }
+.dark\:border {
+  @include dark-mode {
+    border: 1px solid var(--border-color);
+  }
+}
+.border-0 { border: 0; }
+.border-top { border-top: 1px solid var(--border-color); }
+.border-bottom { border-bottom: 1px solid var(--border-color); }
+.border-start { border-left: 1px solid var(--border-color); }
+.border-end { border-right: 1px solid var(--border-color); }
+.border-transparent { border-color: transparent; }
 
-.border-success { border-color: $color-success !important; }
-.border-primary { border-color: $color-primary !important; }
-.border-purple { border-color: $color-purple !important; }
+@include generate-utility('border-color', $utilities-colors, 'border-', false);
 
-// Responsive borders
+// Responsive
 @media (min-width: 992px) {
   .border-end-lg {
-    border-right: 1px solid $color-gray-200 !important;
+    border-right: 1px solid var(--border-color);
   }
 }
 
-.rounded { border-radius: 0.25rem !important; }
-.rounded-circle { border-radius: 50% !important; }
-.rounded-pill { border-radius: 50rem !important; }
+.rounded { border-radius: 0.25rem; }
+.rounded-circle { border-radius: 50%; }
+.rounded-pill { border-radius: 50rem; }

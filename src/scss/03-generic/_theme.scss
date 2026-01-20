@@ -1,0 +1,45 @@
+@use '../01-settings/colors' as *;
+
+:root {
+  /* Light Theme */
+  --bg-body: #{$color-white};
+  --bg-surface: #{$color-white};
+  --bg-header: #{$color-white};
+  --bg-banner: #eef2f6;
+  --bg-input: #{$color-gray-100};
+  --bg-dropdown: #{$color-white};
+  --bg-dropdown-hover: #{$color-gray-100};
+  
+  --text-color: #{$color-black};
+  --text-muted: #{$color-gray-500};
+  
+  --border-color: #{$color-gray-200};
+  
+  color-scheme: light;
+}
+
+[data-theme='dark'],
+html.dark {
+  /* Dark Theme */
+  --bg-body: #0a0a0a;
+  --bg-surface: #171717;
+  --bg-header: #171717;
+  --bg-banner: #121212;
+  --bg-input: #262626;
+  --bg-dropdown: #171717;
+  --bg-dropdown-hover: #262626;
+  
+  --text-color: #ededed;
+  --text-muted: #a1a1a1;
+  
+  --border-color: #333333;
+  
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}

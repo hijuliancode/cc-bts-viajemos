@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, locales, Locale } from "@/i18n/routing";
 import ReactQueryProvider from "@/providers/react-query-provider";
+import ThemeProvider from "@/components/providers/theme-provider";
 import "../../scss/main.scss";
 
 const poppins = Poppins({
@@ -40,9 +41,11 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${poppins.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

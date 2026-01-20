@@ -1,32 +1,30 @@
 @use '../01-settings/colors' as *;
+@use '../02-tools/mixins' as *;
 
 // Alignment
-.text-center { text-align: center !important; }
-.text-end { text-align: right !important; }
-.text-start { text-align: left !important; }
+.text-center { text-align: center; }
+.text-end { text-align: right; }
+.text-start { text-align: left; }
 
-// Colors
-.text-primary { color: $color-primary !important; }
-.text-success { color: $color-success !important; }
-.text-danger { color: $color-error !important; }
-.text-muted { color: $color-text-muted !important; }
-.text-white { color: $color-white !important; }
-.text-dark { color: $color-black !important; }
-.text-purple { color: $color-purple !important; }
+@include generate-utility('color', $utilities-colors, 'text-', false);
+
+// Semantic Colors
+.text-body { color: var(--text-color); }
+.text-muted { color: var(--text-muted); }
 
 // Weights
-.fw-bold { font-weight: 700 !important; }
-.fw-semibold { font-weight: 600 !important; }
-.fw-medium { font-weight: 500 !important; }
-.fw-normal { font-weight: 400 !important; }
+.fw-bold { font-weight: 700; }
+.fw-semibold { font-weight: 600; }
+.fw-medium { font-weight: 500; }
+.fw-normal { font-weight: 400; }
 
 // Decoration
-.text-decoration-none { text-decoration: none !important; }
-.text-decoration-line-through { text-decoration: line-through !important; }
+.text-decoration-none { text-decoration: none; }
+.text-decoration-line-through { text-decoration: line-through; }
 
 // Sizes
-.fs-6 { font-size: 1rem !important; }
-.small { font-size: 0.875rem !important; }
+.fs-6 { font-size: 1rem; }
+.small { font-size: 0.875rem; }
 .h1 { font-size: 2.5rem; }
 .h2 { font-size: 2rem; }
 .h3 { font-size: 1.75rem; }

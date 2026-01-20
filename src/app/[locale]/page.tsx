@@ -4,7 +4,7 @@ import ResultsGridLayout from "@/components/layouts/results-grid/results-grid-la
 
 export default function Home() {
   return (
-    <div className="bg-light min-vh-100">
+    <div className="bg-body min-vh-100">
       <Header />
       <Banner />
       <ResultsGridLayout />

@@ -1,35 +1,34 @@
+@use '../02-tools/mixins' as *;
+
 .card {
-  background: #fff;
+  background-color: var(--bg-surface);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   border-radius: 0.75rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
-  // Economy/Sidebar Card
   &--sidebar {
     border: none;
-    box-shadow: none; // Or lighter shadow if desired, design looks flat/clean
-    background: transparent; // Or white if it's a card
+    box-shadow: none;
+    background: transparent;
     
     @media (min-width: 992px) {
-        background: #fff;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    }
-    
-    .card__features {
-       // Utility classes handle most of it now
     }
   }
 
-  // Result/Horizontal Card
   &--result {
-    padding: 0; // Reset padding as we use card-body
+    padding: 0;
     
     .card-body {
       padding: 1.5rem;
     }
 
-    // Ensure images inside responsive containers behave
     img {
       max-width: 100%;
       height: auto;

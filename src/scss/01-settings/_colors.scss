@@ -25,3 +25,23 @@ $color-info: #00C3E3 !default;
 $color-background: $color-white !default;
 $color-text: $color-black !default;
 $color-text-muted: $color-gray-500 !default;
+
+$utilities-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+  "accent": $color-accent,
+  "cyan": $color-cyan,
+  "purple": $color-purple,
+  "black": $color-black,
+  "white": $color-white,
+  "gray-100": $color-gray-100,
+  "gray-200": $color-gray-200,
+  "gray-300": $color-gray-300,
+  "gray-500": $color-gray-500,
+  "gray-800": $color-gray-800,
+  "gray-900": $color-gray-900,
+  "success": $color-success,
+  "warning": $color-warning,
+  "error": $color-error,
+  "info": $color-info
+);

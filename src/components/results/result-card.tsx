@@ -26,7 +26,7 @@ export default function ResultCard({ car }: ResultCardProps) {
     pricing.options.find((opt) => opt.type === "basic") || pricing.options[1];
 
   return (
-    <div className="card card--result mb-3 shadow-sm border-0">
+    <div className="card card--result mb-3 shadow-sm">
       <div className="card-body p-4">
         <div className="row gap-4">
           <div className="col-lg-5 border-end-lg">
@@ -40,6 +40,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                     objectFit: "contain",
                     objectPosition: "left center",
                   }}
+                  className="bg-surface rounded"
                 />
               </div>
 
@@ -89,7 +90,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                       style={{ objectFit: "contain" }}
                     />
                   ) : (
-                    <div className="badge bg-light text-success border border-success rounded-circle p-2">
+                    <div className="badge bg-gray-100 dark:bg-gray-800 text-success border border-success rounded-circle p-2">
                       <ShieldCheck size={24} />
                     </div>
                   )}
@@ -99,7 +100,7 @@ export default function ResultCard({ car }: ResultCardProps) {
 
             <h3 className="h4 fw-bold mb-1">{carInfo.category}</h3>
             <p className="text-muted mb-3">
-              <span className="fw-semibold text-dark">{carInfo.name}</span>{" "}
+              <span className="fw-semibold text-body">{carInfo.name}</span>{" "}
               <span className="text-primary">o Similar</span>
             </p>
 
@@ -145,12 +146,12 @@ export default function ResultCard({ car }: ResultCardProps) {
                         {t("view_details")} <Info size={14} />
                       </a>
                       {recommendedOption.is_recommended && (
-                        <span className="badge bg-white text-primary border border-primary px-2 py-1 rounded-pill">
+                        <span className="badge bg-surface text-primary border border-primary px-2 py-1 rounded-pill">
                           {t("recommended")}
                         </span>
                       )}
                       {recommendedOption.is_offer && (
-                        <span className="badge bg-white text-purple border border-purple px-2 py-1 rounded-pill">
+                        <span className="badge bg-surface text-purple border border-purple px-2 py-1 rounded-pill">
                           {t("offer")}
                         </span>
                       )}
@@ -202,7 +203,7 @@ export default function ResultCard({ car }: ResultCardProps) {
               <div className="opacity-75">
                 <div className="row align-items-center">
                   <div className="col-md-7">
-                    <h5 className="fw-bold text-dark mb-1">
+                    <h5 className="fw-bold text-body mb-1">
                       {basicOption.name}{" "}
                       <span className="text-muted fw-normal fs-6">
                         - {basicOption.description}
@@ -243,7 +244,7 @@ export default function ResultCard({ car }: ResultCardProps) {
                       )}
 
                       <div className="d-flex align-items-baseline justify-content-end mb-1">
-                        <span className="h3 fw-bold mb-0 text-dark">
+                        <span className="h3 fw-bold mb-0 text-body">
                           {formatCurrency(basicOption.price_per_day)}
                         </span>
                         <span className="text-muted small ms-1">

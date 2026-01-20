@@ -3,3 +3,34 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin dark-mode {
+  [data-theme='dark'] &,
+  html.dark & {
+    @content;
+  }
+}
+
+@mixin generate-utility($property, $map, $prefix: '', $important: true) {
+  @each $key, $value in $map {
+    .#{$prefix}#{$key} {
+      @if $important {
+        #{$property}: $value !important;
+      } @else {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @each $key, $value in $map {
+    .dark\:#{$prefix}#{$key} {
+      @include dark-mode {
+        @if $important {
+          #{$property}: $value !important;
+        } @else {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

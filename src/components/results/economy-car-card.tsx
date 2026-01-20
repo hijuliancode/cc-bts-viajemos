@@ -9,7 +9,7 @@ export default function EconomyCarCard() {
 
   return (
     <div className="card card--sidebar">
-      <h3 className="h4 fw-bold text-start mb-4 text-dark">{t("title")}</h3>
+      <h3 className="h4 fw-bold text-start mb-4 text-body">{t("title")}</h3>
 
       <div
         className="card__image position-relative d-flex align-items-center justify-content-center mb-4"
@@ -26,10 +26,12 @@ export default function EconomyCarCard() {
 
       <div className="card__features">
         <div className="d-flex align-items-center gap-2 mb-3 text-muted">
-          <Users size={20} /> <span className="fw-medium">5 {tFeatures("passengers")}</span>
+          <Users size={20} />{" "}
+          <span className="fw-medium">5 {tFeatures("passengers")}</span>
         </div>
         <div className="d-flex align-items-center gap-2 mb-3 text-muted">
-          <Briefcase size={20} /> <span className="fw-medium">3 {tFeatures("bags")}</span>{" "}
+          <Briefcase size={20} />{" "}
+          <span className="fw-medium">3 {tFeatures("bags")}</span>{" "}
           <span className="text-muted ms-auto" style={{ cursor: "pointer" }}>
             ⓘ
           </span>
@@ -40,7 +42,9 @@ export default function EconomyCarCard() {
         </div>
         <div className="d-flex align-items-center gap-2 mb-3 text-muted">
           <Settings size={20} />{" "}
-          <span className="fw-medium">{tFeatures("automatic_transmission")}</span>
+          <span className="fw-medium">
+            {tFeatures("automatic_transmission")}
+          </span>
         </div>
       </div>
     </div>

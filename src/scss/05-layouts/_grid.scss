@@ -1,5 +1,7 @@
 @use '../01-settings/breakpoints' as *;
 @use '../02-tools/breakpoints' as *;
+@use "sass:map";
+@use "sass:math";
 
 .container {
   width: 100%;
@@ -30,8 +32,8 @@
   width: auto;
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: if($breakpoint == xs, "", "-#{$breakpoint}");
+@each $breakpoint in map.keys($grid-breakpoints) {
+  $infix: if(sass($breakpoint == xs): ""; else: "-#{$breakpoint}");
 
   @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
     .col#{$infix} {
@@ -46,7 +48,7 @@
     @for $i from 1 through 12 {
       .col#{$infix}-#{$i} {
         flex: 0 0 auto;
-        width: percentage($i / 12);
+        width: math.percentage(math.div($i, 12));
       }
     }
   }
