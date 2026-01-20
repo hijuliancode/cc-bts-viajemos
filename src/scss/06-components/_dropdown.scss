@@ -17,11 +17,11 @@
     min-width: 200px;
     z-index: 100;
     padding: 0.5rem 0;
-    display: none; // Toggle via state
+    // display: none; Removed to handle via React
     
-    &.is-open {
-      display: block;
-    }
+    // &.is-open {
+    //   display: block;
+    // }
   }
   
   &__item {

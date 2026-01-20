@@ -1,4 +1,14 @@
+"use client";
+
+import { useAppStore } from "@/store/store";
+
 export default function Banner() {
+  const { currency } = useAppStore();
+  const price = 544448;
+
+  const converted = price / currency.rate;
+  const displayPrice = `${currency.symbol}${converted.toLocaleString("es-CO", { maximumFractionDigits: 0 })}`;
+
   return (
     <div className="banner">
       <div className="container banner__inner">
@@ -8,7 +18,7 @@ export default function Banner() {
         <div className="banner__price-info">
           <small className="text-primary">+ Grandes Desde</small>
           <strong>
-            $544.448 <span className="fw-normal text-muted fs-6">| día</span>
+            {displayPrice} <span className="fw-normal text-muted fs-6">| día</span>
           </strong>
         </div>
       </div>

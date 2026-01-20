@@ -2,6 +2,7 @@ import { Star, ShieldCheck, Ban, Info } from "lucide-react";
 import Image from "next/image";
 import CarFeatures from "./car-features";
 import { type Car } from "@/services/cars-service";
+import { useAppStore } from "@/store/store";
 
 interface ResultCardProps {
   car: Car;
@@ -9,8 +10,12 @@ interface ResultCardProps {
 
 export default function ResultCard({ car }: ResultCardProps) {
   const { vendor, car: carInfo, pricing, badge, badge_image } = car;
+  const { currency } = useAppStore();
 
-  const formatCurrency = (value: number) => `$${value.toLocaleString("es-CO")}`;
+  const formatCurrency = (value: number) => {
+    const converted = value / currency.rate;
+    return `${currency.symbol}${converted.toLocaleString("es-CO", { maximumFractionDigits: 0 })}`;
+  };
 
   const recommendedOption =
     pricing.options.find((opt) => opt.type === "inclusive") ||
