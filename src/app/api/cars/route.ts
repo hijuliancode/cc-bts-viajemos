@@ -134,6 +134,7 @@ const carsData = {
       },
       tags: ["Recommended"],
       badge: "Free Travel Insurance Included",
+      badge_image: "/design/misc/travel-insurance-free.png",
       pricing: {
         currency: "COP",
         options: [
