@@ -1,4 +1,4 @@
-import { Users, Briefcase, Snowflake, Settings } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 interface CarFeaturesProps {
@@ -17,23 +17,46 @@ export default function CarFeatures({
   const t = useTranslations("Features");
 
   return (
-    <div className="d-flex gap-3 text-muted mt-2">
-      <div className="d-flex align-items-center gap-1" title={t("passengers")}>
-        <Users size={16} /> <span>{passengers}</span>
+    <div className="d-flex gap-4 text-muted mt-2">
+      <div className="d-flex align-items-center gap-2" title={t("passengers")}>
+        <Image
+          src="/design/icons/people.svg"
+          alt={t("passengers")}
+          width={16}
+          height={16}
+        />
+        <span>{passengers}</span>
       </div>
-      <div className="d-flex align-items-center gap-1" title={t("bags")}>
-        <Briefcase size={16} /> <span>{bags}</span>
+      <div className="d-flex align-items-center gap-2" title={t("bags")}>
+        <Image
+          src="/design/icons/shopping-bag.svg"
+          alt={t("bags")}
+          width={16}
+          height={16}
+        />
+        <span>{bags}</span>
       </div>
       {has_ac && (
-        <div
-          className="d-flex align-items-center gap-1"
-          title={t("ac")}
-        >
-          <Snowflake size={16} /> <span>A/C</span>
+        <div className="d-flex align-items-center gap-2" title={t("ac")}>
+          <Image
+            src="/design/icons/frozen.svg"
+            alt={t("ac")}
+            width={16}
+            height={16}
+          />
+          <span>A/C</span>
         </div>
       )}
-      <div className="d-flex align-items-center gap-1" title={t("transmission")}>
-        <Settings size={16} />{" "}
+      <div
+        className="d-flex align-items-center gap-2"
+        title={t("transmission")}
+      >
+        <Image
+          src="/design/icons/transmition.svg"
+          alt={t("transmission")}
+          width={16}
+          height={16}
+        />
         <span>{transmission === "automatic" ? t("auto") : t("manual")}</span>
       </div>
     </div>

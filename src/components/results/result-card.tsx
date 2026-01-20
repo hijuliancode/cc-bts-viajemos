@@ -29,7 +29,8 @@ export default function ResultCard({ car }: ResultCardProps) {
     <div className="card card--result mb-3 shadow-sm">
       <div className="card-body p-4">
         <div className="row gap-4">
-          <div className="col-lg-5 border-end-lg">
+          {/* Left Column: Car Info & Features */}
+          <div className="col-lg-5 border-end-lg p-4">
             <div className="d-flex align-items-center gap-3 mb-3">
               <div style={{ width: 80, height: 30, position: "relative" }}>
                 <Image
@@ -98,11 +99,11 @@ export default function ResultCard({ car }: ResultCardProps) {
               )}
             </div>
 
-            <h3 className="h4 fw-bold mb-1">{carInfo.category}</h3>
-            <p className="text-muted mb-3">
-              <span className="fw-semibold text-body">{carInfo.name}</span>{" "}
-              <span className="text-primary">o Similar</span>
-            </p>
+            <h3 className="h4 fw-bold mb-1">
+              {carInfo.name}{" "}
+              <span className="text-primary fs-6 fw-normal">o Similar</span>
+            </h3>
+            {/* <p className="text-muted mb-3 small">{carInfo.category}</p> */}
 
             <CarFeatures
               passengers={carInfo.features.passengers}

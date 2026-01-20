@@ -50,6 +50,18 @@
     }
   }
 
+  &-gradient {
+    background: linear-gradient(90deg, $color-primary 0%, $color-cyan 100%);
+    color: $color-white;
+    border: none;
+    
+    &:hover {
+      background: linear-gradient(90deg, color.adjust($color-primary, $lightness: -5%) 0%, color.adjust($color-cyan, $lightness: -5%) 100%);
+      color: $color-white;
+      transform: translateY(-1px);
+    }
+  }
+
   &.w-100 {
     width: 100%;
   }
