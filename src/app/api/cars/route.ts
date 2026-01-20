@@ -15,7 +15,7 @@ export async function GET() {
       car: {
         name: "Kia Soul o Similar",
         category: "Economico",
-        image_url: "/design/cars/kia-soul.png",
+        image_url: "/content/cars/kia-soul/kia-soul.png",
         features: {
           passengers: 5,
           bags: 3,
@@ -67,7 +67,7 @@ export async function GET() {
       car: {
         name: "Kia Soul o Similar",
         category: "Intermedio",
-        image_url: "/design/cars/kia-soul-silver.png",
+        image_url: "/content/cars/kia-soul/kia-soul.png",
         features: {
           passengers: 5,
           bags: 3,
