@@ -1,0 +1,37 @@
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  
+  &__menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 100;
+    padding: 0.5rem 0;
+    display: none; // Toggle via state
+    
+    &.is-open {
+      display: block;
+    }
+  }
+  
+  &__item {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  // Economy/Sidebar Card
+  &--sidebar {
+    text-align: center;
+    
+    .card__image {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+
+    .card__features {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // Result/Horizontal Card
+  &--result {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+    
+    .card__main {
+      flex: 1;
+    }
+
+    .card__pricing {
+      flex: 0 0 300px;
+      border-left: 1px solid #eee;
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
