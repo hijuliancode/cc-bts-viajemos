@@ -25,6 +25,7 @@ const carsData = {
       },
       tags: ["Recomendado"],
       badge: "Seguro de Viajes Incluido Gratis",
+      badge_image: "/design/misc/travel-insurance-free.png",
       pricing: {
         currency: "COP",
         options: [
@@ -241,6 +242,7 @@ const carsData = {
       },
       tags: ["Recomendado"],
       badge: "Seguro de Viagem Gratuito Incluído",
+      badge_image: "/design/misc/travel-insurance-free.png",
       pricing: {
         currency: "COP",
         options: [

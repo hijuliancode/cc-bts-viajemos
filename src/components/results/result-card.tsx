@@ -200,7 +200,7 @@ export default function ResultCard({ car }: ResultCardProps) {
             )}
 
             {basicOption && (
-              <div className="opacity-75">
+              <div className="opacity-75 d-none d-lg-block">
                 <div className="row align-items-center">
                   <div className="col-md-7">
                     <h5 className="fw-bold text-body mb-1">
